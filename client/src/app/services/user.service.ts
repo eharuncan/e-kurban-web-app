@@ -9,7 +9,7 @@ import {User} from '../models/user';
 @Injectable({providedIn: 'root'})
 export class UserService {
 
-    private apiUrl = 'api/v1/users/';  // URL to web api
+    private apiUrl = 'http://localhost:8080/api/v1/users';  // URL to web api
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

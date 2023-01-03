@@ -9,7 +9,7 @@ import {Hisse} from '../models/hisse';
 @Injectable({providedIn: 'root'})
 export class HisseService {
 
-    private apiUrl = 'api/v1/hisseler/';  // URL to web api
+    private apiUrl = 'http://localhost:8080/api/v1/hisseler';  // URL to web api
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

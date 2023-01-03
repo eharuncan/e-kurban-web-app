@@ -10,7 +10,7 @@ import {KurbanCreate} from "../models/kurbanCreate";
 @Injectable({ providedIn: 'root' })
 export class KurbanService {
 
-  private apiUrl = 'api/v1/kurbanlar/';  // URL to web api
+  private apiUrl = 'http://localhost:8080/api/v1/kurbanlar';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
