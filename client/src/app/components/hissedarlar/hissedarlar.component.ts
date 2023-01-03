@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {HISSEDARLAR, KURBANLAR} from "../../mock-data";
 import {Hissedar} from "../../models/hissedar";
 import {HissedarService} from "../../services/hissedar.service";
+import {Router} from "@angular/router";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-hissedarlar',
@@ -10,21 +12,20 @@ import {HissedarService} from "../../services/hissedar.service";
 })
 export class HissedarlarComponent {
   // hissedarlar: Hissedar[] = HISSEDARLAR;
-  hissedarlar: Hissedar[] = [];
-  dataSource = this.hissedarlar;
+  dataSource = this.appComponent.hissedarlar;
   displayedColumns: string[] = ['ad', 'soyad', 'tel', 'islemler'];
 
-  constructor(private hissedarService: HissedarService) {
+  constructor(private hissedarService: HissedarService, private appComponent: AppComponent) {
   }
 
   getHissedarlar(): void {
     // this.hissedarlar = HISSEDARLAR;
     this.hissedarService.getHissedarlar()
-        .subscribe(hissedarlar => this.hissedarlar = hissedarlar);
+        .subscribe(hissedarlar => this.appComponent.hissedarlar = hissedarlar);
   }
 
   delete(hissedar: Hissedar): void {
-    this.hissedarlar = this.hissedarlar.filter(h => h !== hissedar);
+    this.appComponent.hissedarlar = this.appComponent.hissedarlar.filter(h => h !== hissedar);
     this.hissedarService.deleteHissedar(hissedar.id).subscribe();
   }
 

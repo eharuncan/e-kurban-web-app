@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {Injectable} from '@angular/core';
 import {User} from "./models/user";
 import {AuthService} from "./services/auth.service";
+import {Hissedar} from "./models/hissedar";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class AppComponent {
 
     public isAuthenticated = false;
     public currentUser: User | undefined;
+    public hissedarlar: Hissedar[] = [];
 
     public cikis(): void {
         this.authService.cikis(this.currentUser);
