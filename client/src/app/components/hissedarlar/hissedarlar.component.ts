@@ -18,6 +18,7 @@ export class HissedarlarComponent implements OnInit{
 
   ngOnInit(): void {
     this.getHissedarlar();
+    console.log("çalıştı");
   }
 
   getHissedarlar(): void {

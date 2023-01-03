@@ -78,7 +78,7 @@ export class HissedarService {
 
     /** PUT: update the hissedar on the server */
     updateHissedar(hissedar: Hissedar): Observable<any> {
-        return this.http.put(this.apiUrl, hissedar, this.httpOptions).pipe(
+        return this.http.put(this.apiUrl + "/" + hissedar.id, hissedar, this.httpOptions).pipe(
             catchError(this.handleError<any>('updateHissedar'))
         );
     }

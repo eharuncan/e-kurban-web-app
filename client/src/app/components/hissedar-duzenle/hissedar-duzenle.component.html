@@ -1,19 +1,23 @@
 <h2>Hissedar Düzenle</h2>
 
-<mat-form-field>
-    <mat-label>Ad</mat-label>
-    <input matInput placeholder="" value="{{hissedar.ad}}">
-</mat-form-field><br>
+<form (ngSubmit)="onSubmit()" #hissedarDuzenleForm="ngForm">
+    <mat-form-field>
+        <mat-label>Ad</mat-label>
+        <input [(ngModel)]="editHissedar.ad" name="ad" matInput placeholder="" value="{{editHissedar.ad}}">
+    </mat-form-field>
+    <br>
 
-<mat-form-field>
-    <mat-label>Soyad</mat-label>
-    <input matInput placeholder="" value="{{hissedar.soyad}}">
-</mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Soyad</mat-label>
+        <input [(ngModel)]="editHissedar.soyad" name="soyad" matInput placeholder="" value="{{editHissedar.soyad}}">
+    </mat-form-field>
+    <br>
 
-<mat-form-field>
-    <mat-label>Telefon No</mat-label>
-    <input matInput placeholder="" value="{{hissedar.tel}}">
-</mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Telefon No</mat-label>
+        <input [(ngModel)]="editHissedar.tel" name="tel" matInput placeholder="" value="{{editHissedar.tel}}">
+    </mat-form-field>
+    <br>
 
-<button mat-raised-button color="primary">Kaydet</button>
-
+    <button mat-raised-button color="primary" [disabled]="!hissedarDuzenleForm.form.valid">Kaydet</button>
+</form>
