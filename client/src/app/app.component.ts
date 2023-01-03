@@ -15,7 +15,12 @@ import {AuthService} from "./services/auth.service";
 })
 export class AppComponent {
 
+    path = '';
+
     constructor(private authService: AuthService, private router: Router) {
+        this.router.events.subscribe((val) => {
+            this.path = this.router.url;
+        });
     }
 
     title = 'e-Kurban';

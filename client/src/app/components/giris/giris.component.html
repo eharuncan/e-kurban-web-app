@@ -1,24 +1,25 @@
-<section class="page">
-<div class="page-background" style="background-image: url('/assets/images/giris.jpg');"></div>
+<div id="login-page" class="center">
 
-<div class="center">
 
-    <img src="/assets/images/logo.png" width="200px" height="200px" alt="Logo"/><br><br>
+    <div id="login-section" class="bg-white center">
+        <img src="/assets/images/logo.png" width="200px" height="200px" alt="Logo"/>
 
-    <mat-form-field appearance="fill">
-        <mat-label>E-postanızı giriniz</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="eposta" required>
-        <mat-error *ngIf="eposta.invalid">{{getEpostaErrorMessage()}}</mat-error>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>E-postanızı giriniz</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="eposta" required>
+            <mat-error *ngIf="eposta.invalid">{{getEpostaErrorMessage()}}</mat-error>
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Şifrenizi giriniz</mat-label>
-        <input matInput [type]="passwordHide ? 'password' : 'text'" [formControl]="sifre">
-        <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide" [attr.aria-label]="'Şifreyi gizle'" [attr.aria-pressed]="passwordHide">
-            <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Şifrenizi giriniz</mat-label>
+            <input matInput [type]="passwordHide ? 'password' : 'text'" [formControl]="sifre">
+            <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
+                    [attr.aria-label]="'Şifreyi gizle'" [attr.aria-pressed]="passwordHide">
+                <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
 
-    <button (click)="giris()"  mat-raised-button color="primary">Giriş</button>
+        <button (click)="giris()" mat-raised-button color="primary">Giriş</button>
+    </div>
 </div>
-</section>
+

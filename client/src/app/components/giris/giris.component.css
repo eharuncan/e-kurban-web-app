@@ -11,3 +11,20 @@
     filter: blur(5px);
     z-index: -1;
 }
+
+#login-page {
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/images/giris.jpg");
+    background-size: cover;
+    z-index: 999;
+}
+
+.bg-white {
+    background-color: white;
+    border-radius: 25px;
+}
+
+#login-section{
+    padding: 25px;
+}

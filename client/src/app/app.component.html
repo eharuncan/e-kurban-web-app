@@ -1,35 +1,37 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>{{title}}</span>
-    <span class="example-spacer"></span>
-    <span class="example-spacer">
+<div class="nav-bar" *ngIf="path!='/giris'">
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>{{title}}</span>
+        <span class="example-spacer"></span>
+        <span class="example-spacer">
     <nav>
 <!--      <button *ngIf="!isAuthenticated" mat-raised-button routerLink="/giris">Giris</button>-->
       <button *ngIf="isAuthenticated" mat-raised-button routerLink="/anasayfa">Anasayfa</button>
       <button *ngIf="isAuthenticated" mat-raised-button routerLink="/kurbanlar">Kurbanlar</button>
       <button *ngIf="isAuthenticated" mat-raised-button routerLink="/hissedarlar">Hissedarlar</button>
-      <button *ngIf="isAuthenticated" (click)="cikis()" mat-raised-button><mat-icon>exit_to_app</mat-icon>({{currentUser?.eposta}}) Çıkış</button>
+      <button *ngIf="isAuthenticated" (click)="cikis()" mat-raised-button><mat-icon>exit_to_app</mat-icon>({{currentUser?.eposta}}
+          ) Çıkış</button>
   </nav>
-    <!--  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
-    <!--    <mat-icon>favorite</mat-icon>-->
-    <!--  </button>-->
-    <!--  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">-->
-    <!--    <mat-icon>share</mat-icon>-->
-    <!--  </button>-->
+            <!--  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+            <!--    <mat-icon>favorite</mat-icon>-->
+            <!--  </button>-->
+            <!--  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">-->
+            <!--    <mat-icon>share</mat-icon>-->
+            <!--  </button>-->
     </span>
-</mat-toolbar>
+    </mat-toolbar>
+</div>
 
 <router-outlet></router-outlet>
 
-<div class="footer" #footer>
+<div class="footer" #footer *ngIf="path!='/giris'">
     ©2022 e-Kurban
 </div>
 
 
-
-<!-- 
+<!--
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
