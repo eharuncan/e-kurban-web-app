@@ -1,22 +1,23 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
 
-import { Hissedar } from '../models/hissedar';
+import {Hissedar} from '../models/hissedar';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class HissedarService {
 
     private apiUrl = 'api/v1/hissedarlar';  // URL to web api
 
     httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
 
     constructor(
-        private http: HttpClient) { }
+        private http: HttpClient) {
+    }
 
     /** GET hissedarlar from the server */
     getHissedarlar(): Observable<Hissedar[]> {
@@ -58,7 +59,7 @@ export class HissedarService {
     //////// Save methods //////////
 
     /** POST: add a new hissedar to the server */
-    addHissedar(hissedar: Hissedar): Observable<Hissedar> {
+    addHissedar(hissedar: { ad: string; soyad: string; tel: string}): Observable<Hissedar> {
         return this.http.post<Hissedar>(this.apiUrl, hissedar, this.httpOptions).pipe(
             catchError(this.handleError<Hissedar>('addHissedar'))
         );

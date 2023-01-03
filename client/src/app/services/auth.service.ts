@@ -19,7 +19,7 @@ export class AuthService {
         private http: HttpClient) {
     }
 
-    giris(userLoginDto: { eposta: string | null; sifre: string | null }): Observable<User> {
+    giris(userLoginDto: { eposta: string; sifre: string }): Observable<User> {
         // console.log(userLoginDto);
         return this.http.post<User>(this.apiUrl + "giris", userLoginDto, this.httpOptions).pipe(
             catchError(this.handleError<User>('loginUser'))

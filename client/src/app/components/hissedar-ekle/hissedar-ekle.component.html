@@ -1,14 +1,23 @@
 <h2>Hissedar Ekle</h2>
 
-<mat-form-field>
-    <mat-label>Ad-Soyad</mat-label>
-    <input matInput placeholder="">
-</mat-form-field><br>
+<form (ngSubmit)="onSubmit()" #hissedarEkleForm="ngForm">
+    <mat-form-field>
+        <mat-label>Ad</mat-label>
+        <input [(ngModel)]="newHissedar.ad" name="ad" matInput placeholder="" required>
+    </mat-form-field>
+    <br>
 
-<mat-form-field>
-    <mat-label>Telefon No</mat-label>
-    <input matInput placeholder="">
-</mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Soyad</mat-label>
+        <input [(ngModel)]="newHissedar.soyad" name="soyad" matInput placeholder="" required>
+    </mat-form-field>
+    <br>
 
-<button mat-raised-button color="primary">Kaydet</button>
+    <mat-form-field>
+        <mat-label>Telefon No</mat-label>
+        <input [(ngModel)]="newHissedar.tel" name="tel" matInput placeholder="" required>
+    </mat-form-field>
+    <br>
 
+    <button type="submit" mat-raised-button color="primary" [disabled]="!hissedarEkleForm.form.valid">Kaydet</button>
+</form>

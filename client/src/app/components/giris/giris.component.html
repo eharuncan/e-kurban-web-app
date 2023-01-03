@@ -1,25 +1,24 @@
 <div id="login-page" class="center">
-
-
     <div id="login-section" class="bg-white center">
         <img src="/assets/images/logo.png" width="200px" height="200px" alt="Logo"/>
 
+        <form (ngSubmit)="onSubmit()" #userLoginForm="ngForm">
         <mat-form-field appearance="fill">
             <mat-label>E-postanızı giriniz</mat-label>
-            <input matInput placeholder="pat@example.com" [formControl]="eposta" required>
-            <mat-error *ngIf="eposta.invalid">{{getEpostaErrorMessage()}}</mat-error>
+            <input [(ngModel)]="loginUser.eposta" name="eposta" matInput placeholder="pat@example.com" required>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Şifrenizi giriniz</mat-label>
-            <input matInput [type]="passwordHide ? 'password' : 'text'" [formControl]="sifre">
+            <input [(ngModel)]="loginUser.sifre" name="sifre" matInput [type]="passwordHide ? 'password' : 'text'" required>
             <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
                     [attr.aria-label]="'Şifreyi gizle'" [attr.aria-pressed]="passwordHide">
                 <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
 
-        <button (click)="giris()" mat-raised-button color="primary">Giriş</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!userLoginForm.form.valid">Giriş</button>
+        </form>
     </div>
 </div>
 

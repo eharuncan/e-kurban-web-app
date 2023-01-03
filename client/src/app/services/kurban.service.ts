@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Kurban } from '../models/kurban';
+import {KurbanCreate} from "../models/kurbanCreate";
 
 @Injectable({ providedIn: 'root' })
 export class KurbanService {
@@ -65,7 +66,7 @@ export class KurbanService {
   //////// Save methods //////////
 
   /** POST: add a new kurban to the server */
-  addKurban(kurban: Kurban): Observable<Kurban> {
+  addKurban(kurban: KurbanCreate): Observable<Kurban> {
     return this.http.post<Kurban>(this.apiUrl, kurban, this.httpOptions).pipe(
       catchError(this.handleError<Kurban>('addKurban'))
     );
