@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { Kurban } from '../models/kurban';
 import {KurbanCreate} from "../models/kurbanCreate";
@@ -10,7 +10,7 @@ import {KurbanCreate} from "../models/kurbanCreate";
 @Injectable({ providedIn: 'root' })
 export class KurbanService {
 
-  private apiUrl = 'api/v1/kurbanlar';  // URL to web api
+  private apiUrl = 'api/v1/kurbanlar/';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
