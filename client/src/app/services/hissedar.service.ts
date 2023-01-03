@@ -5,11 +5,12 @@ import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 import {Hissedar} from '../models/hissedar';
+import {HissedarCreate} from "../models/hissedarCreate";
 
 @Injectable({providedIn: 'root'})
 export class HissedarService {
 
-    private apiUrl = 'api/v1/hissedarlar/';  // URL to web api
+    private apiUrl = 'http://localhost:8080/api/v1/hissedarlar';  // URL to web api
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -59,8 +60,9 @@ export class HissedarService {
     //////// Save methods //////////
 
     /** POST: add a new hissedar to the server */
-    addHissedar(hissedar: { ad: string; soyad: string; tel: string}): Observable<Hissedar> {
-        return this.http.post<Hissedar>(this.apiUrl, hissedar, this.httpOptions).pipe(
+    addHissedar(hissedarCreate: HissedarCreate): Observable<Hissedar> {
+        console.log(hissedarCreate);
+        return this.http.post<Hissedar>(this.apiUrl, hissedarCreate, this.httpOptions).pipe(
             catchError(this.handleError<Hissedar>('addHissedar'))
         );
     }

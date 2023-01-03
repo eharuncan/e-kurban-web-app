@@ -5,11 +5,12 @@ import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
 import {User} from '../models/user';
+import {UserLogin} from "../models/userLogin";
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-    private apiUrl = 'api/v1/';  // URL to web api
+    private apiUrl = 'http://localhost:8080/api/v1/';  // URL to web api
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,9 +20,9 @@ export class AuthService {
         private http: HttpClient) {
     }
 
-    giris(userLoginDto: { eposta: string; sifre: string }): Observable<User> {
+    giris(userLogin: UserLogin): Observable<User> {
         // console.log(userLoginDto);
-        return this.http.post<User>(this.apiUrl + "giris", userLoginDto, this.httpOptions).pipe(
+        return this.http.post<User>(this.apiUrl + "giris", userLogin, this.httpOptions).pipe(
             catchError(this.handleError<User>('loginUser'))
         );
     }
