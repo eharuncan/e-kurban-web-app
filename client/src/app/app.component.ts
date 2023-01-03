@@ -28,7 +28,6 @@ export class AppComponent {
 
     public isAuthenticated = false;
     public currentUser: User | undefined;
-    public hissedarlar: Hissedar[] = [];
 
     public cikis(): void {
         this.authService.cikis(this.currentUser);
