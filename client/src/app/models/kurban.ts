@@ -14,7 +14,8 @@ export interface Kurban {
   yas: number;
   fiyat: number;
   durum: Durum;
-  kesimSirasi?: number;
-  hisse?: Hisse;
+  kesimSirasi: number;
+  hisseAdedi: number;
+  hisseList: Hisse[];
 }
 

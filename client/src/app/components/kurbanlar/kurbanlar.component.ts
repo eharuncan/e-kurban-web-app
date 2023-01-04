@@ -13,7 +13,6 @@ import {Cins} from "../../enums/cins";
 export class KurbanlarComponent implements OnInit {
     // kurbanlar: Kurban[] = KURBANLAR;
     kurbanlar: Kurban[] = [];
-    dataSource = this.kurbanlar;
     displayedColumns: string[] = ['kesimSira', 'kupeNo', 'cins', 'kunye', 'kilo', 'yas', 'fiyat', 'durum'];
 
     constructor(private kurbanService: KurbanService) {
@@ -36,19 +35,16 @@ export class KurbanlarComponent implements OnInit {
 
     selectTumu(): void {
         this.getKurbanlar();
-        this.dataSource = this.kurbanlar;
     }
 
     selectKucukbas(): void {
         this.getKurbanlar();
         this.kurbanlar = this.kurbanlar.filter(h => h.cins == Cins.KUCUKBAS);
-        this.dataSource = this.kurbanlar;
     }
 
     selectBuyukbas(): void {
         this.getKurbanlar();
         this.kurbanlar = this.kurbanlar.filter(h => h.cins == Cins.BUYUKBAS);
-        this.dataSource = this.kurbanlar;
     }
 
 }

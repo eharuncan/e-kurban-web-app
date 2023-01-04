@@ -6,12 +6,12 @@ import {Durum} from "./enums/durum";
 import {Hissedar} from "./models/hissedar";
 
 export const KURBAN: Kurban =
-  { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 3, hisse: undefined };
+  { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 3, hisseAdedi: 7, hisseList: [] };
 
 export const KURBANLAR: Kurban[] = [
-  { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 1, hisse: undefined },
-  { id: 2, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.BOGA, kupeNo: "AB124", kilo: 660, yas: 1, fiyat: 8200, durum: Durum.SATILDI, kesimSirasi: 2, hisse: undefined },
-  { id: 3, resimUrl: "/assets/images/kurban.jpg", cins: Cins.KUCUKBAS, kunye: KunyeKucukbas.KOYUN, kupeNo: "AB125", kilo: 40, yas: 2, fiyat: 2200, durum: Durum.SATISTA, kesimSirasi: 3, hisse: undefined },
+  { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 1, hisseAdedi: 7, hisseList: [] },
+  { id: 2, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.BOGA, kupeNo: "AB124", kilo: 660, yas: 1, fiyat: 8200, durum: Durum.SATILDI, kesimSirasi: 2, hisseAdedi: 7, hisseList: [] },
+  { id: 3, resimUrl: "/assets/images/kurban.jpg", cins: Cins.KUCUKBAS, kunye: KunyeKucukbas.KOYUN, kupeNo: "AB125", kilo: 40, yas: 2, fiyat: 2200, durum: Durum.SATISTA, kesimSirasi: 3, hisseAdedi: 1, hisseList: [] },
 ];
 
 export const HISSEDAR: Hissedar =
