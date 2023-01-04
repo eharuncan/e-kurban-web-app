@@ -5,6 +5,8 @@ import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 import {Hisse} from '../models/hisse';
+import {Hissedar} from "../models/hissedar";
+import {HissedarCreate} from "../models/hissedarCreate";
 
 @Injectable({providedIn: 'root'})
 export class HisseService {
@@ -59,15 +61,21 @@ export class HisseService {
     //////// Save methods //////////
 
     /** POST: add a new hisse to the server */
-    addHisse(hisse: Hisse): Observable<Hisse> {
-        return this.http.post<Hisse>(this.apiUrl, hisse, this.httpOptions).pipe(
+    addMevcutHissedar(kurbanId: number, hissedarId: number): Observable<Hisse> {
+        return this.http.post<Hisse>(this.apiUrl, {kurbanId, hissedarId}, this.httpOptions).pipe(
+            catchError(this.handleError<Hisse>('addHisse'))
+        );
+    }
+
+    addYeniHissedar(kurbanId: number, hissedarCreate: HissedarCreate): Observable<Hisse> {
+        return this.http.post<Hisse>(this.apiUrl, {kurbanId, hissedarCreate}, this.httpOptions).pipe(
             catchError(this.handleError<Hisse>('addHisse'))
         );
     }
 
     /** DELETE: delete the hisse from the server */
-    deleteHisse(id: number): Observable<Hisse> {
-        const url = `${this.apiUrl}/${id}`;
+    deleteHissedar(hisseId: number): Observable<Hisse> {
+        const url = `${this.apiUrl}/${hisseId}`;
 
         return this.http.delete<Hisse>(url, this.httpOptions).pipe(
             catchError(this.handleError<Hisse>('deleteHisse'))
@@ -75,8 +83,8 @@ export class HisseService {
     }
 
     /** PUT: update the hisse on the server */
-    updateHisse(hisse: Hisse): Observable<any> {
-        return this.http.put(this.apiUrl, hisse, this.httpOptions).pipe(
+    updateHissedar(hisseId: number, hissedarId: number): Observable<any> {
+        return this.http.put(this.apiUrl + "/" + hisseId, {hisseId, hissedarId}, this.httpOptions).pipe(
             catchError(this.handleError<any>('updateHisse'))
         );
     }

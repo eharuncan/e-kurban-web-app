@@ -2,7 +2,7 @@
     max-width: 400px;
 }
 
-#hisse-list {
+.hisse-list {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
