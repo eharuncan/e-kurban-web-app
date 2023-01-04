@@ -14,6 +14,7 @@ import {Hisse} from "../../models/hisse";
 import {Hissedar} from "../../models/hissedar";
 import {HisseService} from "../../services/hisse.service";
 import {HissedarCreate} from "../../models/hissedarCreate";
+import {HisseCreate} from "../../models/hisseCreate";
 
 @Component({
     selector: 'app-kurban-bilgi',
@@ -64,6 +65,10 @@ export class KurbanBilgiComponent implements OnInit {
         soyad: "test",
         tel: "05321234567"
     };
+    hisseCreate: HisseCreate = {
+        kurbanId: 0,
+        hissedarId: 0
+    }
     kurbanResimUrl: string = "";
     cinsler: string [] = [];
     kunyeler: string [] = [];
@@ -152,7 +157,9 @@ export class KurbanBilgiComponent implements OnInit {
     }
 
     mevcutHissedarEkle(kurbanId: number): void {
-        this.hisseService.addMevcutHissedar(kurbanId, this.hissedar.id)
+        this.hisseCreate.kurbanId = kurbanId;
+        this.hisseCreate.hissedarId = 3;
+        this.hisseService.addMevcutHissedar(this.hisseCreate)
             .subscribe();
         const currentUrl = this.router.url;
         this.router.navigate([currentUrl]);

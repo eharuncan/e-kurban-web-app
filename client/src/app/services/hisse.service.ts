@@ -7,6 +7,8 @@ import {catchError, map} from 'rxjs/operators';
 import {Hisse} from '../models/hisse';
 import {Hissedar} from "../models/hissedar";
 import {HissedarCreate} from "../models/hissedarCreate";
+import {HisseCreate} from "../models/hisseCreate";
+import {Kurban} from "../models/kurban";
 
 @Injectable({providedIn: 'root'})
 export class HisseService {
@@ -61,24 +63,24 @@ export class HisseService {
     //////// Save methods //////////
 
     /** POST: add a new hisse to the server */
-    addMevcutHissedar(kurbanId: number, hissedarId: number): Observable<Hisse> {
-        return this.http.post<Hisse>(this.apiUrl, {kurbanId, hissedarId}, this.httpOptions).pipe(
-            catchError(this.handleError<Hisse>('addHisse'))
+    addMevcutHissedar(hisseCreate: HisseCreate): Observable<Kurban> {
+        return this.http.post<Kurban>(this.apiUrl, hisseCreate, this.httpOptions).pipe(
+            catchError(this.handleError<Kurban>('addHisse'))
         );
     }
 
-    addYeniHissedar(kurbanId: number, hissedarCreate: HissedarCreate): Observable<Hisse> {
-        return this.http.post<Hisse>(this.apiUrl, {kurbanId, hissedarCreate}, this.httpOptions).pipe(
-            catchError(this.handleError<Hisse>('addHisse'))
+    addYeniHissedar(kurbanId: number, hissedarCreate: HissedarCreate): Observable<Kurban> {
+        return this.http.post<Kurban>(this.apiUrl, {kurbanId, hissedarCreate}, this.httpOptions).pipe(
+            catchError(this.handleError<Kurban>('addHisse'))
         );
     }
 
     /** DELETE: delete the hisse from the server */
-    deleteHissedar(hisseId: number): Observable<Hisse> {
+    deleteHissedar(hisseId: number): Observable<unknown> {
         const url = `${this.apiUrl}/${hisseId}`;
 
-        return this.http.delete<Hisse>(url, this.httpOptions).pipe(
-            catchError(this.handleError<Hisse>('deleteHisse'))
+        return this.http.delete(url, this.httpOptions).pipe(
+            catchError(this.handleError('deleteHisse'))
         );
     }
 

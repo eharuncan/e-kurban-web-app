@@ -68,11 +68,11 @@ export class HissedarService {
     }
 
     /** DELETE: delete the hissedar from the server */
-    deleteHissedar(id: number): Observable<Hissedar> {
+    deleteHissedar(id: number): Observable<unknown> {
         const url = `${this.apiUrl}/${id}`;
 
-        return this.http.delete<Hissedar>(url, this.httpOptions).pipe(
-            catchError(this.handleError<Hissedar>('deleteHissedar'))
+        return this.http.delete(url, this.httpOptions).pipe(
+            catchError(this.handleError('deleteHissedar'))
         );
     }
 
