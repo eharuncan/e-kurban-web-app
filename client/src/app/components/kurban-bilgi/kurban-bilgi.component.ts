@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Location} from '@angular/common';
 
 import {Kurban} from '../../models/kurban';
 import {KurbanService} from '../../services/kurban.service';
@@ -9,9 +8,6 @@ import {Cins} from "../../enums/cins";
 import {KunyeBuyukbas, KunyeKucukbas} from "../../enums/kunye";
 import {Durum} from "../../enums/durum";
 import {KurbanEdit} from "../../models/kurbanEdit";
-import {KurbanCreate} from "../../models/kurbanCreate";
-import {Hisse} from "../../models/hisse";
-import {Hissedar} from "../../models/hissedar";
 import {HisseService} from "../../services/hisse.service";
 import {HissedarCreate} from "../../models/hissedarCreate";
 import {HisseCreate} from "../../models/hisseCreate";
@@ -47,18 +43,6 @@ export class KurbanBilgiComponent implements OnInit {
         yas: 0,
         fiyat: 0,
         hisseList: []
-    };
-    hissedar: Hissedar = {
-        id: 1,
-        ad: "hissedar",
-        soyad: "test",
-        tel: "05321234567"
-    };
-    hissedar2: Hissedar = {
-        id: 2,
-        ad: "hissedar2",
-        soyad: "test2",
-        tel: "05321234567"
     };
     hissedarCreate: HissedarCreate = {
         ad: "hissedar",
@@ -152,6 +136,7 @@ export class KurbanBilgiComponent implements OnInit {
             this.kurbanService.updateKurban(this.kurbanEdit)
                 .subscribe(updatedKurban => {
                     this.kurban = updatedKurban;
+                    this.router.navigate(['/kurbanlar']);
                 });
         }
     }
@@ -173,7 +158,7 @@ export class KurbanBilgiComponent implements OnInit {
     }
 
     hissedarDuzenle(hisseId: number): void {
-        this.hisseService.updateHissedar(hisseId, this.hissedar2.id)
+        this.hisseService.updateHissedar(hisseId, 5)
             .subscribe(updatedKurban => {
                 this.kurban = updatedKurban;
             });
