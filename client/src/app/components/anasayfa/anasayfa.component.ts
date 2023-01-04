@@ -25,7 +25,9 @@ export class AnasayfaComponent implements OnInit {
     getKurbanlar(): void {
         // this.kurbanlar = KURBANLAR;
         this.kurbanService.getKurbanlar()
-            .subscribe(kurbanlar => this.kurbanlar = kurbanlar);
+            .subscribe(kurbanlar => {
+                this.kurbanlar = kurbanlar.filter(h => h.hisseAdedi - h.hisseList.length != 0)
+            });
     }
 
     getKurbanBayraminaKalanGun(): void {
@@ -40,14 +42,14 @@ export class AnasayfaComponent implements OnInit {
     selectKucukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.KUCUKBAS);
+                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.KUCUKBAS && h.hisseAdedi - h.hisseList.length != 0);
             });
     }
 
     selectBuyukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.BUYUKBAS);
+                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.BUYUKBAS && h.hisseAdedi - h.hisseList.length != 0);
             });
     }
 }

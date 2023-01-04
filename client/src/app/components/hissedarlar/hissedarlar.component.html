@@ -4,7 +4,7 @@
 
 <button routerLink="/hissedar-ekle" mat-raised-button color="primary">Hissedar Ekle</button>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="hissedarlar" class="mat-elevation-z8">
     <ng-container matColumnDef="ad">
         <th mat-header-cell *matHeaderCellDef> Ad</th>
         <td mat-cell *matCellDef="let element"> {{element.ad}} </td>

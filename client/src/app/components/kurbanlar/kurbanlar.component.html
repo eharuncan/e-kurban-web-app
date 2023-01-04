@@ -3,14 +3,13 @@
 <app-kurban-ara></app-kurban-ara>
 
 <button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
+<mat-radio-group aria-label="Select an option">
+    <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
+    <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
+    <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
+</mat-radio-group>
 
 <div *ngIf="kurbanlar.length > 0">
-    <mat-radio-group aria-label="Select an option">
-        <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
-        <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
-        <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
-    </mat-radio-group>
-
     <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
 
         <ng-container matColumnDef="kesimSira">

@@ -116,26 +116,6 @@ export class KurbanBilgiComponent implements OnInit {
         }
     }
 
-    getKurban(): void {
-        // this.kurban = KURBAN;
-        const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-        this.kurbanService.getKurban(id)
-            .subscribe(kurban => {
-                this.kurban = kurban;
-                this.kurbanEdit = kurban;
-                this.change();
-            });
-    }
-
-    onSubmit(): void {
-        if (this.kurban) {
-            this.kurbanService.updateKurban(this.kurbanEdit)
-                .subscribe(() => {
-                    this.router.navigate(['/kurbanlar']);
-                });
-        }
-    }
-
     change(): void {
         this.cinsler = Object.values(Cins);
 
@@ -156,48 +136,58 @@ export class KurbanBilgiComponent implements OnInit {
         }
     }
 
+    getKurban(): void {
+        // this.kurban = KURBAN;
+        const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+        this.kurbanService.getKurban(id)
+            .subscribe(kurban => {
+                this.kurban = kurban;
+                this.kurbanEdit = kurban;
+                this.change();
+            });
+    }
+
+    onSubmit(): void {
+        if (this.kurban) {
+            this.kurbanService.updateKurban(this.kurbanEdit)
+                .subscribe(updatedKurban => {
+                    this.kurban = updatedKurban;
+                });
+        }
+    }
+
     mevcutHissedarEkle(kurbanId: number): void {
         this.hisseCreate.kurbanId = kurbanId;
-        this.hisseCreate.hissedarId = 3;
+        this.hisseCreate.hissedarId = 1;
         this.hisseService.addMevcutHissedar(this.hisseCreate)
-            .subscribe();
-        const currentUrl = this.router.url;
-        this.router.navigate([currentUrl]);
+            .subscribe(updatedKurban => {
+                this.kurban = updatedKurban;
+            });
     }
 
     yeniHissedarEkle(kurbanId: number): void {
         this.hisseService.addYeniHissedar(kurbanId, this.hissedarCreate)
             .subscribe();
-        const currentUrl = this.router.url;
-        this.router.navigate([currentUrl]);
     }
 
     hissedarDuzenle(hisseId: number): void {
         this.hisseService.updateHissedar(hisseId, this.hissedar2.id)
             .subscribe();
-        const currentUrl = this.router.url;
-        this.router.navigate([currentUrl]);
     }
 
     hissedarKaldir(hisseId: number): void {
         this.hisseService.deleteHissedar(hisseId)
             .subscribe();
-        const currentUrl = this.router.url;
-        this.router.navigate([currentUrl]);
     }
 
     updateKurbanDurumKesildi(kurbanId: number): void {
         this.kurbanService.updateKurbanDurum(kurbanId, Durum.KESILDI)
             .subscribe();
-        const currentUrl = this.router.url;
-        this.router.navigate([currentUrl]);
     }
 
     updateKurbanDurumTelef(kurbanId: number): void {
         this.kurbanService.updateKurbanDurum(kurbanId, Durum.TELEF)
             .subscribe();
-        const currentUrl = this.router.url;
-        this.router.navigate([currentUrl]);
     }
 }
 

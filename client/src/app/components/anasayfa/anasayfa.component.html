@@ -3,22 +3,23 @@
 <button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
 
 Müsait Kurbanlar:
-<div *ngIf="kurbanlar.length > 0">
-    <mat-radio-group aria-label="Select an option">
-        <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
-        <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
-        <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
-    </mat-radio-group>
+<mat-radio-group aria-label="Select an option">
+    <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
+    <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
+    <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
+</mat-radio-group>
 
+<div *ngIf="kurbanlar.length > 0">
     <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
         <ng-container matColumnDef="kesimSira">
             <th mat-header-cell *matHeaderCellDef> K.Sıra</th>
-            <td mat-cell *matCellDef="let kurban; let index = index" > {{kurban.kesimSirasi}} </td>
+            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.kesimSirasi}} </td>
         </ng-container>
 
         <ng-container matColumnDef="cins">
             <th mat-header-cell *matHeaderCellDef> Cinsi</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"><a routerLink="/kurbanlar/{{kurban.id}}">{{kurban.cins}}</a></td>
+            <td mat-cell *matCellDef="let kurban; let index = index"><a
+                    routerLink="/kurbanlar/{{kurban.id}}">{{kurban.cins}}</a></td>
         </ng-container>
 
         <ng-container matColumnDef="kunye">
@@ -33,11 +34,12 @@ Müsait Kurbanlar:
 
         <ng-container matColumnDef="kalanHisse">
             <th mat-header-cell *matHeaderCellDef> Kalan Hisse</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.hisseAdedi - kurban.hisseList.length}} / {{kurban.hisseAdedi}} </td>
+            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.hisseAdedi - kurban.hisseList.length}}
+                / {{kurban.hisseAdedi}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 </div>
 <div *ngIf="kurbanlar?.length == 0">

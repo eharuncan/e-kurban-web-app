@@ -1,6 +1,6 @@
 .hisse-card {
-    width: 200px;
-    height: 200px;
+    min-width: 150px;
+    min-height: 200px;
     background-color: lightcyan;
     margin: 5px;
 }
@@ -8,6 +8,6 @@
 .hisse-list {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }

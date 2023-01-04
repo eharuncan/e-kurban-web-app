@@ -10,7 +10,7 @@ import {HissedarService} from "../../services/hissedar.service";
 })
 export class HissedarlarComponent implements OnInit{
   // hissedarlar: Hissedar[] = HISSEDARLAR;
-  dataSource: Hissedar[] = [];
+  hissedarlar: Hissedar[] = [];
   displayedColumns: string[] = ['ad', 'soyad', 'tel', 'islemler'];
 
   constructor(private hissedarService: HissedarService) {
@@ -18,17 +18,16 @@ export class HissedarlarComponent implements OnInit{
 
   ngOnInit(): void {
     this.getHissedarlar();
-    console.log("çalıştı");
   }
 
   getHissedarlar(): void {
     // this.hissedarlar = HISSEDARLAR;
     this.hissedarService.getHissedarlar()
-        .subscribe(hissedarlar => this.dataSource = hissedarlar);
+        .subscribe(hissedarlar => this.hissedarlar = hissedarlar);
   }
 
   delete(hissedar: Hissedar): void {
-    this.dataSource = this.dataSource.filter(h => h !== hissedar);
+    this.hissedarlar = this.hissedarlar.filter(h => h !== hissedar);
     this.hissedarService.deleteHissedar(hissedar.id).subscribe();
   }
 
