@@ -6,9 +6,9 @@
         <table>
             <tr>
                 <td>
-        <img src="{{newKurban.resimUrl}}" width="810" height="458" alt="Kurban Foto"/>
+        <img src="{{newKurbanResimUrl}}" width="810" height="458" alt="Kurban Foto"/>
                     <br>
-        <mat-form-field>
+        <mat-form-field [style.width.px]=810>
             <mat-label>Kurban Resmi URL</mat-label>
             <input [(ngModel)]="newKurban.resimUrl" #resimUrl (change)="onResimUrlChange(resimUrl.value)" value="{{newKurban.resimUrl}}"  name="resimUrl" matInput placeholder="">
         </mat-form-field>

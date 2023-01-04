@@ -4,6 +4,8 @@
 
 <button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
 
+<div *ngIf="kurbanlar">
+  <div *ngIf="kurbanlar.length > 0">
 <mat-radio-group aria-label="Select an option">
   <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
   <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
@@ -63,6 +65,11 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</div>
+  <div *ngIf="kurbanlar?.length == 0">
+    Herhangi bir kurban bulunamadı.
+  </div>
+</div>
 
 
 
