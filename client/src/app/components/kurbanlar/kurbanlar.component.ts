@@ -40,22 +40,17 @@ export class KurbanlarComponent implements OnInit {
     selectKucukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins == Cins.KUCUKBAS);
+                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.KUCUKBAS);
             });
     }
 
     selectBuyukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins == Cins.BUYUKBAS);
+                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.BUYUKBAS);
             });
     }
 
 }
 
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

@@ -4,77 +4,59 @@
 
 <button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
 
-<div *ngIf="kurbanlar">
-  <div *ngIf="kurbanlar.length > 0">
-<mat-radio-group aria-label="Select an option">
-  <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
-  <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
-  <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
-</mat-radio-group>
+<div *ngIf="kurbanlar.length > 0">
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
+        <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
+        <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
+    </mat-radio-group>
 
-<table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
+    <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+        <ng-container matColumnDef="kesimSira">
+            <th mat-header-cell *matHeaderCellDef> K.Sıra</th>
+            <td mat-cell *matCellDef="let kurban">{{kurban.kesimSirasi}}</td>
+        </ng-container>
 
-  <ng-container matColumnDef="kesimSira">
-    <th mat-header-cell *matHeaderCellDef> K.Sıra </th>
-    <td mat-cell *matCellDef="let element">{{element.kesimSirasi}}</td>
-  </ng-container>
+        <ng-container matColumnDef="kupeNo">
+            <th mat-header-cell *matHeaderCellDef> Küpe No</th>
+            <td mat-cell *matCellDef="let kurban"><a routerLink="/kurbanlar/{{kurban.id}}">{{kurban.kupeNo}}</a></td>
+        </ng-container>
 
-  <ng-container matColumnDef="kupeNo">
-    <th mat-header-cell *matHeaderCellDef> Küpe No </th>
-    <td mat-cell *matCellDef="let element"> <a routerLink="/kurbanlar/{{element.id}}">{{element.kupeNo}}</a> </td>
-  </ng-container>
+        <ng-container matColumnDef="cins">
+            <th mat-header-cell *matHeaderCellDef> Cinsi</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.cins}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="cins">
-    <th mat-header-cell *matHeaderCellDef> Cinsi </th>
-    <td mat-cell *matCellDef="let element"> {{element.cins}} </td>
-  </ng-container>
+        <ng-container matColumnDef="kunye">
+            <th mat-header-cell *matHeaderCellDef> Künyesi</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.kunye}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="kunye">
-    <th mat-header-cell *matHeaderCellDef> Künyesi </th>
-    <td mat-cell *matCellDef="let element"> {{element.kunye}} </td>
-  </ng-container>
+        <ng-container matColumnDef="kilo">
+            <th mat-header-cell *matHeaderCellDef> Kilosu</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.kilo}} kg</td>
+        </ng-container>
 
-  <ng-container matColumnDef="kilo">
-    <th mat-header-cell *matHeaderCellDef> Kilosu </th>
-    <td mat-cell *matCellDef="let element"> {{element.kilo}} kg</td>
-  </ng-container>
+        <ng-container matColumnDef="yas">
+            <th mat-header-cell *matHeaderCellDef> Yaşı</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.yas}} ay</td>
+        </ng-container>
 
-  <ng-container matColumnDef="yas">
-    <th mat-header-cell *matHeaderCellDef> Yaşı </th>
-    <td mat-cell *matCellDef="let element"> {{element.yas}} ay </td>
-  </ng-container>
+        <ng-container matColumnDef="fiyat">
+            <th mat-header-cell *matHeaderCellDef> Fiyatı</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.fiyat}} TL</td>
+        </ng-container>
 
-  <ng-container matColumnDef="fiyat">
-    <th mat-header-cell *matHeaderCellDef> Fiyatı </th>
-    <td mat-cell *matCellDef="let element"> {{element.fiyat}} TL </td>
-  </ng-container>
+        <ng-container matColumnDef="durum">
+            <th mat-header-cell *matHeaderCellDef> Durumu</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.durum}} </td>
+        </ng-container>
 
-  <ng-container matColumnDef="durum">
-    <th mat-header-cell *matHeaderCellDef> Durumu </th>
-    <td mat-cell *matCellDef="let element"> {{element.durum}} </td>
-  </ng-container>
-
-<!--  <ng-container matColumnDef="islem">-->
-<!--    <th mat-header-cell *matHeaderCellDef> İşlem </th>-->
-<!--    <td mat-cell *matCellDef="let element" (click)="delete(element)"> X </td>-->
-<!--  </ng-container>-->
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>
-  <div *ngIf="kurbanlar?.length == 0">
+<div *ngIf="kurbanlar?.length == 0">
     Herhangi bir kurban bulunamadı.
-  </div>
 </div>
-
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->

@@ -11,8 +11,8 @@ import {Cins} from "../../enums/cins";
 })
 export class AnasayfaComponent implements OnInit {
     kurbanBayraminaKalanGun: number = 0;
-    kurbanlar: Kurban[] = KURBANLAR;
-    dataSource = this.kurbanlar;
+    // kurbanlar: Kurban[] = KURBANLAR;
+    kurbanlar: Kurban[] = [];
     displayedColumns: string[] = ['kesimSira', 'cins', 'kunye', 'fiyat', 'kalanHisse'];
 
     constructor(private kurbanService: KurbanService) {
@@ -23,9 +23,9 @@ export class AnasayfaComponent implements OnInit {
     }
 
     getKurbanlar(): void {
-        this.kurbanlar = KURBANLAR;
-        // this.kurbanService.getKurbanlar()
-        //     .subscribe(kurbanlar => this.kurbanlar = kurbanlar.slice(1, 5));
+        // this.kurbanlar = KURBANLAR;
+        this.kurbanService.getKurbanlar()
+            .subscribe(kurbanlar => this.kurbanlar = kurbanlar);
     }
 
     getKurbanBayraminaKalanGun(): void {
@@ -35,25 +35,21 @@ export class AnasayfaComponent implements OnInit {
 
     selectTumu(): void {
         this.getKurbanlar();
-        this.dataSource = this.kurbanlar;
     }
 
     selectKucukbas(): void {
-        this.getKurbanlar();
-        this.kurbanlar = this.kurbanlar.filter(h => h.cins == Cins.KUCUKBAS);
-        this.dataSource = this.kurbanlar;
+        this.kurbanService.getKurbanlar()
+            .subscribe(kurbanlar => {
+                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.KUCUKBAS);
+            });
     }
 
     selectBuyukbas(): void {
-        this.getKurbanlar();
-        this.kurbanlar = this.kurbanlar.filter(h => h.cins == Cins.BUYUKBAS);
-        this.dataSource = this.kurbanlar;
+        this.kurbanService.getKurbanlar()
+            .subscribe(kurbanlar => {
+                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.BUYUKBAS);
+            });
     }
 }
 
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
