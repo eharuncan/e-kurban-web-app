@@ -2,7 +2,7 @@
 
 <form (ngSubmit)="onSubmit()" #hissedarEkleForm="ngForm">
     <div id="kurban-bilgi-page" class="center" *ngIf="kurban">
-        <table border="1">
+        <table>
             <tr>
                 <td>
                     <h3>Kurban Küpe No: {{kurban.kupeNo | uppercase}}</h3>
@@ -95,44 +95,39 @@
             <tr>
                 <td colspan="3">
                     <div *ngIf="kurban.hisseList">
-                        <div *ngIf="kurban.hisseList.length > 0">
-                            <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList">
-                                <div *ngIf="hisse.hissedar">
-                                    <mat-card-header>
-                                        <mat-card-title>{{hisse.hissedar.ad}} {{hisse.hissedar.soyad}}</mat-card-title>
-                                        <mat-card-subtitle>{{hisse.hissedar.tel}}</mat-card-subtitle>
-                                    </mat-card-header>
-                                    <mat-card-actions>
-                                        <button (click)="hissedarDuzenle(hisse, hisse.hissedar)" mat-mini-fab
-                                                color="accent"
-                                                aria-label="Edit icon">
-                                            <mat-icon>edit</mat-icon>
-                                        </button>
-                                        <button (click)="hissedarKaldir(hisse, hisse.hissedar)" mat-mini-fab
-                                                color="warn"
-                                                aria-label="Delete icon">
-                                            <mat-icon>delete</mat-icon>
-                                        </button>
-                                    </mat-card-actions>
-                                </div>
-                            </mat-card>
-                        </div>
-
-                        <div *ngIf="kurban.hisseList.length == 0">
-                            <div id="hisse-list" *ngIf="kurban.hisseAdedi">
-                                <mat-card class="hisse-card"
-                                          *ngFor="let item of [].constructor(kurban.hisseAdedi); let index = index">
-                                    <mat-card-header>
-                                        Hisse No: {{index + 1}}
-                                    </mat-card-header>
-                                    <mat-card-actions>
-                                        <button mat-mini-fab color="primary"
-                                                aria-label="Add icon">
-                                            <mat-icon>add</mat-icon>
-                                        </button>
-                                    </mat-card-actions>
-                                </mat-card>
+                        <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList">
+                            <div *ngIf="hisse.hissedar">
+                                <mat-card-header>
+                                    <mat-card-title>{{hisse.hissedar.ad}} {{hisse.hissedar.soyad}}</mat-card-title>
+                                    <mat-card-subtitle>{{hisse.hissedar.tel}}</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-actions>
+                                    <button (click)="hissedarDuzenle(hisse, hisse.hissedar)" mat-mini-fab
+                                            color="accent"
+                                            aria-label="Edit icon">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button (click)="hissedarKaldir(hisse, hisse.hissedar)" mat-mini-fab
+                                            color="warn"
+                                            aria-label="Delete icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-card-actions>
                             </div>
+                        </mat-card>
+                        <div id="hisse-list" *ngIf="kurban.hisseAdedi">
+                            <mat-card class="hisse-card"
+                                      *ngFor="let item of [].constructor(kurban.hisseAdedi - kurban.hisseList.length); let index = index">
+                                <mat-card-header>
+                                    Hisse No: {{kurban.hisseList.length + index + 1 }}
+                                </mat-card-header>
+                                <mat-card-actions>
+                                    <button mat-mini-fab color="primary"
+                                            aria-label="Add icon">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
                         </div>
                     </div>
                 </td>
