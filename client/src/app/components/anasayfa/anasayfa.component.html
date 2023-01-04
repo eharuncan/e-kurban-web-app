@@ -13,28 +13,28 @@ Müsait Kurbanlar:
     <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
         <ng-container matColumnDef="kesimSira">
             <th mat-header-cell *matHeaderCellDef> K.Sıra</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.kesimSirasi}} </td>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.kesimSirasi}} </td>
         </ng-container>
 
         <ng-container matColumnDef="cins">
             <th mat-header-cell *matHeaderCellDef> Cinsi</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"><a
+            <td mat-cell *matCellDef="let kurban"><a
                     routerLink="/kurbanlar/{{kurban.id}}">{{kurban.cins}}</a></td>
         </ng-container>
 
         <ng-container matColumnDef="kunye">
             <th mat-header-cell *matHeaderCellDef> Künyesi</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.kunye}} </td>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.kunye}} </td>
         </ng-container>
 
         <ng-container matColumnDef="fiyat">
-            <th mat-header-cell *matHeaderCellDef> Fiyatı</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.fiyat}} </td>
+            <th mat-header-cell *matHeaderCellDef> Fiyatı (TL)</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.fiyat}} </td>
         </ng-container>
 
         <ng-container matColumnDef="kalanHisse">
             <th mat-header-cell *matHeaderCellDef> Kalan Hisse</th>
-            <td mat-cell *matCellDef="let kurban; let index = index"> {{kurban.hisseAdedi - kurban.hisseList.length}}
+            <td mat-cell *matCellDef="let kurban"> {{kurban.hisseAdedi - kurban.hisseList.length}}
                 / {{kurban.hisseAdedi}} </td>
         </ng-container>
 
