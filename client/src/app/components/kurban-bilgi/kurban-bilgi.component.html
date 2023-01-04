@@ -2,7 +2,7 @@
 
 <form (ngSubmit)="onSubmit()" #hissedarEkleForm="ngForm">
     <div id="kurban-bilgi-page" class="center" *ngIf="kurban">
-        <table>
+        <table border="1">
             <tr>
                 <td>
                     <h3>Kurban Küpe No: {{kurban.kupeNo | uppercase}}</h3>
@@ -80,8 +80,8 @@
                                 {{kurban.kesimSirasi}}
                             </td>
                         </tr>
-
                     </table>
+
                     <button mat-raised-button color="primary">
                         <mat-icon>device_hub</mat-icon>
                         Kesildi
@@ -93,9 +93,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
-                    <div *ngIf="kurban.hisseList">
-                        <div class="hisse-list">
+                <td colspan="3" >
+                    <div class="hisse-list">
+                        <div class="hisse-list" *ngIf="kurban.hisseList.length != 0">
                             <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList; let index = index">
                                 <mat-card-header>
                                     Hisse No: {{ index + 1 }}
@@ -114,9 +114,8 @@
                                 </button>
                             </mat-card>
                         </div>
-                        <div class="hisse-list" *ngIf="kurban.hisseAdedi">
-                            <mat-card class="hisse-card"
-                                      *ngFor="let item of [].constructor(kurban.hisseAdedi - kurban.hisseList.length); let index = index">
+                        <div class="hisse-list" *ngIf="kurban.hisseAdedi - kurban.hisseList.length != 0">
+                            <mat-card class="hisse-card" *ngFor="let item of [].constructor(kurban.hisseAdedi - kurban.hisseList.length); let index = index">
                                 <mat-card-header>
                                     Hisse No: {{kurban.hisseList.length + index + 1 }}
                                 </mat-card-header>
