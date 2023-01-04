@@ -8,9 +8,10 @@
         <span class="example-spacer">
     <nav>
 <!--      <button *ngIf="!isAuthenticated" mat-raised-button routerLink="/giris">Giris</button>-->
-      <button *ngIf="isAuthenticated" mat-raised-button routerLink="/anasayfa">Anasayfa</button>
-      <button *ngIf="isAuthenticated" mat-raised-button routerLink="/kurbanlar">Kurbanlar</button>
-      <button *ngIf="isAuthenticated" mat-raised-button routerLink="/hissedarlar">Hissedarlar</button>
+      <button mat-raised-button routerLink="/anasayfa">Anasayfa</button>
+      <button mat-raised-button routerLink="/kurbanlar">Kurbanlar</button>
+      <button mat-raised-button routerLink="/hissedarlar">Hissedarlar</button>
+        <button *ngIf="!isAuthenticated" mat-raised-button routerLink="/giris"><mat-icon>login_to_app</mat-icon>Giriş</button>
       <button *ngIf="isAuthenticated" (click)="cikis()" mat-raised-button><mat-icon>exit_to_app</mat-icon>({{currentUser?.eposta}}
           ) Çıkış</button>
   </nav>

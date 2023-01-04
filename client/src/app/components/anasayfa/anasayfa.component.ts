@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Kurban} from '../../models/kurban';
 import {KurbanService} from '../../services/kurban.service';
-import {KURBANLAR} from "../../mock-data";
 import {Cins} from "../../enums/cins";
+import {Durum} from "../../enums/durum";
 
 @Component({
     selector: 'app-anasayfa',
@@ -17,7 +17,7 @@ export class AnasayfaComponent implements OnInit {
 
     constructor(private kurbanService: KurbanService) {
     }
-    
+
     ngOnInit(): void {
         this.getKurbanlar();
     }
@@ -26,7 +26,9 @@ export class AnasayfaComponent implements OnInit {
         // this.kurbanlar = KURBANLAR;
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.hisseAdedi - h.hisseList.length != 0)
+                this.kurbanlar = kurbanlar.filter(k =>
+                    k.durum === Durum.SATISTA
+                );
             });
     }
 
@@ -42,14 +44,20 @@ export class AnasayfaComponent implements OnInit {
     selectKucukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.KUCUKBAS && h.hisseAdedi - h.hisseList.length != 0);
+                this.kurbanlar = kurbanlar.filter(k =>
+                    k.cins === Cins.KUCUKBAS &&
+                    k.durum === Durum.SATISTA
+                );
             });
     }
 
     selectBuyukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.BUYUKBAS && h.hisseAdedi - h.hisseList.length != 0);
+                this.kurbanlar = kurbanlar.filter(k =>
+                    k.cins === Cins.BUYUKBAS &&
+                    k.durum === Durum.SATISTA
+                );
             });
     }
 }

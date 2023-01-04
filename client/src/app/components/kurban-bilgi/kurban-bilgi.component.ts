@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {Kurban} from '../../models/kurban';
 import {KurbanService} from '../../services/kurban.service';
-import {KURBAN} from "../../mock-data";
 import {Cins} from "../../enums/cins";
 import {KunyeBuyukbas, KunyeKucukbas} from "../../enums/kunye";
 import {Durum} from "../../enums/durum";
@@ -50,12 +49,13 @@ export class KurbanBilgiComponent implements OnInit {
         tel: "05321234567"
     };
     hisseCreate: HisseCreate = {
-        kurbanId: 0,
-        hissedarId: 0
+        kurbanId: 4,
+        hissedarId: 3
     }
     kurbanResimUrl: string = "";
     cinsler: string [] = [];
     kunyeler: string [] = [];
+    islemDurumu: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -100,7 +100,7 @@ export class KurbanBilgiComponent implements OnInit {
         }
     }
 
-    change(): void {
+    refreshViews(): void {
         this.cinsler = Object.values(Cins);
 
         if (this.kurban.cins === Cins.KUCUKBAS) {
@@ -118,6 +118,8 @@ export class KurbanBilgiComponent implements OnInit {
         } else {
             this.kurbanResimUrl = this.kurban.resimUrl || "";
         }
+
+        this.islemDurumu = this.kurban.durum === Durum.SATILDI || this.kurban.durum === Durum.SATISTA;
     }
 
     getKurban(): void {
@@ -127,11 +129,11 @@ export class KurbanBilgiComponent implements OnInit {
             .subscribe(kurban => {
                 this.kurban = kurban;
                 this.kurbanEdit = kurban;
-                this.change();
+                this.refreshViews();
             });
     }
 
-    onSubmit(): void {
+    save(): void {
         if (this.kurban) {
             this.kurbanService.updateKurban(this.kurbanEdit)
                 .subscribe(updatedKurban => {
@@ -158,7 +160,7 @@ export class KurbanBilgiComponent implements OnInit {
     }
 
     hissedarDuzenle(hisseId: number): void {
-        this.hisseService.updateHissedar(hisseId, 5)
+        this.hisseService.updateHissedar(hisseId, this.hisseCreate)
             .subscribe(updatedKurban => {
                 this.kurban = updatedKurban;
             });
@@ -174,6 +176,7 @@ export class KurbanBilgiComponent implements OnInit {
         this.kurbanService.updateKurbanDurum(kurbanId, Durum.KESILDI)
             .subscribe(updatedKurban => {
                 this.kurban = updatedKurban;
+                this.refreshViews();
             });
     }
 
@@ -181,6 +184,7 @@ export class KurbanBilgiComponent implements OnInit {
         this.kurbanService.updateKurbanDurum(kurbanId, Durum.TELEF)
             .subscribe(updatedKurban => {
                 this.kurban = updatedKurban;
+                this.refreshViews();
             });
     }
 }

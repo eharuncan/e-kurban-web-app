@@ -1,6 +1,6 @@
 <h2>Kurban Bilgi</h2>
 
-<form (ngSubmit)="onSubmit()" #hissedarEkleForm="ngForm">
+<form #hissedarEkleForm="ngForm">
     <div id="kurban-bilgi-page" class="center" *ngIf="kurban">
         <table border="0">
             <tr>
@@ -64,7 +64,7 @@
                     </mat-form-field>
                     <br>
 
-                    <button mat-raised-button color="primary">
+                    <button (click)="save()" mat-raised-button color="primary">
                         Kaydet
                     </button>
                 </td>
@@ -82,14 +82,18 @@
                         </tr>
                     </table>
 
-                    <button (click)="updateKurbanDurumKesildi(kurban.id)" mat-raised-button color="primary">
-                        <mat-icon>device_hub</mat-icon>
-                        Kesildi
-                    </button>
-                    <button (click)="updateKurbanDurumTelef(kurban.id)" mat-raised-button color="primary">
-                        <mat-icon>close</mat-icon>
-                        Telef
-                    </button>
+                    <div *ngIf="islemDurumu">
+                        <button (click)="updateKurbanDurumKesildi(kurban.id)" mat-raised-button color="primary">
+                            <mat-icon>device_hub</mat-icon>
+                            Kesildi
+                        </button>
+                        <button (click)="updateKurbanDurumTelef(kurban.id)" mat-raised-button color="primary">
+                            <mat-icon>close</mat-icon>
+                            Telef
+                        </button>
+                    </div>
+
+
                 </td>
             </tr>
             <tr>
