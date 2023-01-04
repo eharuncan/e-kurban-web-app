@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 })
 export class KurbanEkleComponent implements OnInit{
 
-  newKurban : KurbanCreate = {resimUrl: "", kupeNo: "", cins: Cins.KUCUKBAS, kunye: KunyeKucukbas.KOYUN, fiyat:0, yas:0, kilo: 0}
+  newKurban : KurbanCreate = {resimUrl: "assets/images/kurban.jpg", kupeNo: "", cins: Cins.KUCUKBAS, kunye: KunyeKucukbas.KOYUN, fiyat:0, yas:0, kilo: 0}
 
   cinsler = Object.values(Cins);
   kunyeler: string [] = [];
@@ -30,14 +30,16 @@ export class KurbanEkleComponent implements OnInit{
     }
   }
 
-
-
   onCinsChange(secilenCins: { value: any; }) {
     if (secilenCins.value === Cins.KUCUKBAS){
       this.kunyeler = Object.values(KunyeKucukbas);
     }else if (secilenCins.value === Cins.BUYUKBAS){
       this.kunyeler = Object.values(KunyeBuyukbas);
     }
+  }
+
+  onResimUrlChange(value: any) {
+    this.newKurban.resimUrl = value;
   }
 
   onSubmit(): void {

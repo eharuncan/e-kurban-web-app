@@ -1,13 +1,20 @@
 <h2>Kurban Ekle</h2>
 
-<div>
+<div id="kurban-ekle-page" class="center">
     <form (ngSubmit)="onSubmit()" #kurbanEkleForm="ngForm">
+
+        <table>
+            <tr>
+                <td>
+        <img src="{{newKurban.resimUrl}}" width="810" height="458" alt="Kurban Foto"/>
+                    <br>
         <mat-form-field>
             <mat-label>Kurban Resmi URL</mat-label>
-            <input [(ngModel)]="newKurban.resimUrl" name="resimUrl" matInput placeholder="">
+            <input [(ngModel)]="newKurban.resimUrl" #resimUrl (change)="onResimUrlChange(resimUrl.value)" value="{{newKurban.resimUrl}}"  name="resimUrl" matInput placeholder="">
         </mat-form-field>
         <br>
-
+                </td>
+                <td>
         <mat-form-field>
             <mat-label>Küpe No</mat-label>
             <input [(ngModel)]="newKurban.kupeNo" name="kupeNo" matInput placeholder="" required>
@@ -56,5 +63,8 @@
         <button type="submit"  mat-raised-button color="primary" [disabled]="!kurbanEkleForm.form.valid">
             Kaydet
         </button>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>

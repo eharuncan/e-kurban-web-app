@@ -11,7 +11,8 @@ import {Cins} from "../../enums/cins";
     styleUrls: ['./kurbanlar.component.css']
 })
 export class KurbanlarComponent implements OnInit {
-    kurbanlar: Kurban[] = KURBANLAR;
+    // kurbanlar: Kurban[] = KURBANLAR;
+    kurbanlar: Kurban[] = [];
     dataSource = this.kurbanlar;
     displayedColumns: string[] = ['kesimSira', 'kupeNo', 'cins', 'kunye', 'kilo', 'yas', 'fiyat', 'durum'];
 
@@ -23,9 +24,9 @@ export class KurbanlarComponent implements OnInit {
     }
 
     getKurbanlar(): void {
-        this.kurbanlar = KURBANLAR;
-        // this.kurbanService.getKurbanlar()
-        //     .subscribe(kurbanlar => this.kurbanlar = kurbanlar);
+        // this.kurbanlar = KURBANLAR;
+        this.kurbanService.getKurbanlar()
+            .subscribe(kurbanlar => this.kurbanlar = kurbanlar);
     }
 
     delete(kurban: Kurban): void {
