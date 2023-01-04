@@ -96,27 +96,23 @@
                 <td colspan="3">
                     <div *ngIf="kurban.hisseList">
                         <div class="hisse-list">
-                        <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList; let index = index">
-                            <div *ngIf="hisse.hissedar">
+                            <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList; let index = index">
                                 <mat-card-header>
                                     Hisse No: {{ index + 1 }}
-                                    <mat-card-title>{{hisse.hissedar.ad}} {{hisse.hissedar.soyad}}</mat-card-title>
-                                    <mat-card-subtitle>{{hisse.hissedar.tel}}</mat-card-subtitle>
+                                    <mat-card-title>{{hisse.ad}} {{hisse.soyad}}</mat-card-title>
+                                    <mat-card-subtitle>{{hisse.tel}}</mat-card-subtitle>
                                 </mat-card-header>
-                                <div *ngIf="hisse.hissedar">
-                                    <button (click)="hissedarDuzenle(hisse.id)" mat-mini-fab
-                                            color="accent"
-                                            aria-label="Edit icon">
-                                        <mat-icon>edit</mat-icon>
-                                    </button>
-                                    <button (click)="hissedarKaldir(hisse.id)" mat-mini-fab
-                                            color="warn"
-                                            aria-label="Delete icon">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
-                                </div>
-                            </div>
-                        </mat-card>
+                                <button (click)="hissedarDuzenle(hisse.id)" mat-mini-fab
+                                        color="accent"
+                                        aria-label="Edit icon">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button (click)="hissedarKaldir(hisse.id)" mat-mini-fab
+                                        color="warn"
+                                        aria-label="Delete icon">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </mat-card>
                         </div>
                         <div class="hisse-list" *ngIf="kurban.hisseAdedi">
                             <mat-card class="hisse-card"

@@ -2,6 +2,9 @@ import {Hissedar} from "./hissedar";
 
 export interface Hisse {
     id: number;
-    no: number;
-    hissedar?: Hissedar;
+    kurbanId: number;
+    hissedarId: number;
+    ad: string;
+    soyad: string;
+    tel: string;
 }
