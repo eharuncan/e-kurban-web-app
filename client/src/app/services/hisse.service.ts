@@ -85,9 +85,9 @@ export class HisseService {
     }
 
     /** PUT: update the hisse on the server */
-    updateHissedar(hisseId: number, hissedarId: number): Observable<any> {
-        return this.http.put(this.apiUrl + "/" + hisseId, {hisseId, hissedarId}, this.httpOptions).pipe(
-            catchError(this.handleError<any>('updateHisse'))
+    updateHissedar(hisseId: number, hissedarId: number): Observable<Kurban> {
+        return this.http.put<Kurban>(this.apiUrl + "/" + hisseId, {hisseId, hissedarId}, this.httpOptions).pipe(
+            catchError(this.handleError<Kurban>('updateHisse'))
         );
     }
 

@@ -167,27 +167,36 @@ export class KurbanBilgiComponent implements OnInit {
 
     yeniHissedarEkle(kurbanId: number): void {
         this.hisseService.addYeniHissedar(kurbanId, this.hissedarCreate)
-            .subscribe();
+            .subscribe(updatedKurban => {
+                this.kurban = updatedKurban;
+            });
     }
 
     hissedarDuzenle(hisseId: number): void {
         this.hisseService.updateHissedar(hisseId, this.hissedar2.id)
-            .subscribe();
+            .subscribe(updatedKurban => {
+                this.kurban = updatedKurban;
+            });
     }
 
     hissedarKaldir(hisseId: number): void {
         this.hisseService.deleteHissedar(hisseId)
             .subscribe();
+        this.kurban.hisseList = this.kurban.hisseList.filter(h => h.id !== hisseId);
     }
 
     updateKurbanDurumKesildi(kurbanId: number): void {
         this.kurbanService.updateKurbanDurum(kurbanId, Durum.KESILDI)
-            .subscribe();
+            .subscribe(updatedKurban => {
+                this.kurban = updatedKurban;
+            });
     }
 
     updateKurbanDurumTelef(kurbanId: number): void {
         this.kurbanService.updateKurbanDurum(kurbanId, Durum.TELEF)
-            .subscribe();
+            .subscribe(updatedKurban => {
+                this.kurban = updatedKurban;
+            });
     }
 }
 

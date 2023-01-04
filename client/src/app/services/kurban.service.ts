@@ -92,9 +92,9 @@ export class KurbanService {
     }
 
     /** PUT: update the kurban on the server */
-    updateKurbanDurum(kurbanId: number, kurbanDurum: Durum): Observable<any> {
-        return this.http.put(this.apiUrl + "/" + kurbanId + "/durum?kurbanDurum=" + kurbanDurum, this.httpOptions).pipe(
-            catchError(this.handleError<any>('updateKurban'))
+    updateKurbanDurum(kurbanId: number, kurbanDurum: Durum): Observable<Kurban> {
+        return this.http.put<Kurban>(this.apiUrl + "/" + kurbanId + "/durum?kurbanDurum=" + kurbanDurum, this.httpOptions).pipe(
+            catchError(this.handleError<Kurban>('updateKurban'))
         );
     }
 
