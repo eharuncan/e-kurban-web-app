@@ -38,13 +38,17 @@ export class KurbanlarComponent implements OnInit {
     }
 
     selectKucukbas(): void {
-        this.getKurbanlar();
-        this.kurbanlar = this.kurbanlar.filter(h => h.cins == Cins.KUCUKBAS);
+        this.kurbanService.getKurbanlar()
+            .subscribe(kurbanlar => {
+                this.kurbanlar = kurbanlar.filter(h => h.cins == Cins.KUCUKBAS);
+            });
     }
 
     selectBuyukbas(): void {
-        this.getKurbanlar();
-        this.kurbanlar = this.kurbanlar.filter(h => h.cins == Cins.BUYUKBAS);
+        this.kurbanService.getKurbanlar()
+            .subscribe(kurbanlar => {
+                this.kurbanlar = kurbanlar.filter(h => h.cins == Cins.BUYUKBAS);
+            });
     }
 
 }
