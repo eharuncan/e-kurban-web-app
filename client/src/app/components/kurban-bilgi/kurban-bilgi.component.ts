@@ -185,6 +185,20 @@ export class KurbanBilgiComponent implements OnInit {
         const currentUrl = this.router.url;
         this.router.navigate([currentUrl]);
     }
+
+    updateKurbanDurumKesildi(kurbanId: number): void {
+        this.kurbanService.updateKurbanDurum(kurbanId, Durum.KESILDI)
+            .subscribe();
+        const currentUrl = this.router.url;
+        this.router.navigate([currentUrl]);
+    }
+
+    updateKurbanDurumTelef(kurbanId: number): void {
+        this.kurbanService.updateKurbanDurum(kurbanId, Durum.TELEF)
+            .subscribe();
+        const currentUrl = this.router.url;
+        this.router.navigate([currentUrl]);
+    }
 }
 
 

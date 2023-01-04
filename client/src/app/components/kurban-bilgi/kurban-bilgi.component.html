@@ -2,7 +2,7 @@
 
 <form (ngSubmit)="onSubmit()" #hissedarEkleForm="ngForm">
     <div id="kurban-bilgi-page" class="center" *ngIf="kurban">
-        <table border="1">
+        <table border="0">
             <tr>
                 <td>
                     <h3>Kurban Küpe No: {{kurban.kupeNo | uppercase}}</h3>
@@ -82,11 +82,11 @@
                         </tr>
                     </table>
 
-                    <button mat-raised-button color="primary">
+                    <button (click)="updateKurbanDurumKesildi(kurban.id)" mat-raised-button color="primary">
                         <mat-icon>device_hub</mat-icon>
                         Kesildi
                     </button>
-                    <button mat-raised-button color="primary">
+                    <button (click)="updateKurbanDurumTelef(kurban.id)" mat-raised-button color="primary">
                         <mat-icon>close</mat-icon>
                         Telef
                     </button>

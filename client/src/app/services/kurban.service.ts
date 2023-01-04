@@ -7,6 +7,7 @@ import {catchError, map} from 'rxjs/operators';
 import {Kurban} from '../models/kurban';
 import {KurbanCreate} from "../models/kurbanCreate";
 import {KurbanEdit} from "../models/kurbanEdit";
+import {Durum} from "../enums/durum";
 
 @Injectable({providedIn: 'root'})
 export class KurbanService {
@@ -86,6 +87,13 @@ export class KurbanService {
     /** PUT: update the kurban on the server */
     updateKurban(kurbanEdit: KurbanEdit): Observable<any> {
         return this.http.put(this.apiUrl + "/" + kurbanEdit.id, kurbanEdit, this.httpOptions).pipe(
+            catchError(this.handleError<any>('updateKurban'))
+        );
+    }
+
+    /** PUT: update the kurban on the server */
+    updateKurbanDurum(kurbanId: number, kurbanDurum: Durum): Observable<any> {
+        return this.http.put(this.apiUrl + "/" + kurbanId + "/durum?kurbanDurum=" + kurbanDurum, this.httpOptions).pipe(
             catchError(this.handleError<any>('updateKurban'))
         );
     }
