@@ -1,94 +1,96 @@
 <h2>Kurban Bilgi</h2>
 
-<div id="kurban-bilgi-page" class="center" *ngIf="kurban">
-    <table>
-        <tr>
-            <td>
-                <h3>Kurban Küpe No: {{kurban.kupeNo | uppercase}}</h3>
-                <img src="{{kurbanResimUrl}}" width="810" height="458" alt="Kurban Foto"/>
-                <br>
-                <mat-form-field [style.width.px]=810>
-                    <mat-label>Resim URL</mat-label>
-                    <input value="{{kurban.resimUrl}}"  #resimUrl (change)="onResimUrlChange(resimUrl.value)" matInput placeholder="">
-                </mat-form-field>
-                <br>
-            </td>
-            <td>
-                <mat-form-field appearance="fill">
-                    <mat-label>Cinsi</mat-label>
-                    <mat-select value="{{kurban.cins}}" #cins (selectionChange)="onCinsChange($event)">
-                        <mat-option *ngFor="let cins of cinsler" [value]="cins">
-                            {{cins}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br>
+<form (ngSubmit)="onSubmit()" #hissedarEkleForm="ngForm">
+    <div id="kurban-bilgi-page" class="center" *ngIf="kurban">
+        <table>
+            <tr>
+                <td>
+                    <h3>Kurban Küpe No: {{kurban.kupeNo | uppercase}}</h3>
+                    <img src="{{kurbanResimUrl}}" width="810" height="458" alt="Kurban Foto"/>
+                    <br>
+                    <mat-form-field [style.width.px]=810>
+                        <mat-label>Resim URL</mat-label>
+                        <input [(ngModel)]="kurbanEdit.resimUrl" name="ad" value="{{kurban.resimUrl}}" #resimUrl (change)="onResimUrlChange(resimUrl.value)"
+                               matInput placeholder="">
+                    </mat-form-field>
+                    <br>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cinsi</mat-label>
+                        <mat-select [(ngModel)]="kurbanEdit.cins" name="cins" value="{{kurban.cins}}" (selectionChange)="onCinsChange($event)">
+                            <mat-option *ngFor="let cins of cinsler" [value]="cins">
+                                {{cins}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Künyesi</mat-label>
-                    <mat-select value="{{kurban.kunye}}" #kunye>
-                        <mat-option *ngFor="let kunye of kunyeler" [value]="kunye">
-                            {{kunye}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Künyesi</mat-label>
+                        <mat-select [(ngModel)]="kurbanEdit.kunye" name="kunye" value="{{kurban.kunye}}">
+                            <mat-option *ngFor="let kunye of kunyeler" [value]="kunye">
+                                {{kunye}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
 
-                <mat-form-field>
-                    <mat-label>Kilosu (kg)</mat-label>
-                    <input value="{{kurban.kilo}}" #kilo matInput placeholder="">
-                </mat-form-field>
-                <br>
+                    <mat-form-field>
+                        <mat-label>Kilosu (kg)</mat-label>
+                        <input [(ngModel)]="kurbanEdit.kilo" name="kilo" value="{{kurban.kilo}}" matInput placeholder="">
+                    </mat-form-field>
+                    <br>
 
-                <mat-form-field>
-                    <mat-label>Yaşı (ay)</mat-label>
-                    <input value="{{kurban.yas}}" #yas matInput placeholder="">
-                </mat-form-field>
-                <br>
+                    <mat-form-field>
+                        <mat-label>Yaşı (ay)</mat-label>
+                        <input [(ngModel)]="kurbanEdit.yas" name="yas" value="{{kurban.yas}}" matInput placeholder="">
+                    </mat-form-field>
+                    <br>
 
-                <mat-form-field>
-                    <mat-label>Fiyatı (TL)</mat-label>
-                    <input value="{{kurban.fiyat}}" #fiyat matInput placeholder="">
-                </mat-form-field>
-                <br>
+                    <mat-form-field>
+                        <mat-label>Fiyatı (TL)</mat-label>
+                        <input [(ngModel)]="kurbanEdit.fiyat" name="fiyat" value="{{kurban.fiyat}}" matInput placeholder="">
+                    </mat-form-field>
+                    <br>
 
-                <mat-form-field>
-                    <mat-label>Durumu</mat-label>
-                    <input value="{{kurban.durum}}" disabled #durum matInput>
-                </mat-form-field>
-                <br>
+                    <mat-form-field>
+                        <mat-label>Durumu</mat-label>
+                        <input value="{{kurban.durum}}" disabled matInput>
+                    </mat-form-field>
+                    <br>
 
-                <button mat-raised-button color="primary">
-                    Kaydet
-                </button>
-            </td>
-            <td>
-                <table border="1">
-                    <tr>
-                        <td>
-                            Kesim Sırası:
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            {{kurban.kesimSirasi}}
-                        </td>
-                    </tr>
+                    <button mat-raised-button color="primary">
+                        Kaydet
+                    </button>
+                </td>
+                <td>
+                    <table border="1">
+                        <tr>
+                            <td>
+                                Kesim Sırası:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{kurban.kesimSirasi}}
+                            </td>
+                        </tr>
 
-                </table>
-                <button mat-raised-button color="primary">
-                    <mat-icon>device_hub</mat-icon>
-                    Kesildi
-                </button>
-                <button mat-raised-button color="primary">
-                    <mat-icon>close</mat-icon>
-                    Telef
-                </button>
-            </td>
-        </tr>
-    </table>
-</div>
-
+                    </table>
+                    <button mat-raised-button color="primary">
+                        <mat-icon>device_hub</mat-icon>
+                        Kesildi
+                    </button>
+                    <button mat-raised-button color="primary">
+                        <mat-icon>close</mat-icon>
+                        Telef
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
 
 <!--
 Copyright Google LLC. All Rights Reserved.

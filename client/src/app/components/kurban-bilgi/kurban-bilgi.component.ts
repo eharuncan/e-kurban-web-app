@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 import {Kurban} from '../../models/kurban';
@@ -8,6 +8,8 @@ import {KURBAN} from "../../mock-data";
 import {Cins} from "../../enums/cins";
 import {KunyeBuyukbas, KunyeKucukbas} from "../../enums/kunye";
 import {Durum} from "../../enums/durum";
+import {KurbanEdit} from "../../models/kurbanEdit";
+import {KurbanCreate} from "../../models/kurbanCreate";
 
 @Component({
     selector: 'app-kurban-bilgi',
@@ -30,12 +32,24 @@ export class KurbanBilgiComponent implements OnInit {
         hisseAdedi: 0,
         hisseList: []
     };
+    kurbanEdit: KurbanEdit = {
+        id: 0,
+        resimUrl: "",
+        cins: Cins.KUCUKBAS,
+        kunye: KunyeKucukbas.KOYUN,
+        kupeNo: "123",
+        kilo: 0,
+        yas: 0,
+        fiyat: 0,
+        hisseList: []
+    };
     kurbanResimUrl: string = "";
     cinsler: string [] = [];
     kunyeler: string [] = [];
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private kurbanService: KurbanService,
         private location: Location
     ) {
@@ -55,9 +69,7 @@ export class KurbanBilgiComponent implements OnInit {
             }
         } else if (secilenCins.value === Cins.BUYUKBAS) {
             this.kunyeler = Object.values(KunyeBuyukbas);
-            console.log(this.kurban.resimUrl);
             if (this.kurban.resimUrl == "") {
-                console.log("buraya girdi");
                 this.kurbanResimUrl = "assets/images/kurban-buyukbas-default.png";
             } else {
                 this.kurbanResimUrl = this.kurban.resimUrl || "";
@@ -84,18 +96,17 @@ export class KurbanBilgiComponent implements OnInit {
         this.kurbanService.getKurban(id)
             .subscribe(kurban => {
                 this.kurban = kurban;
+                this.kurbanEdit = kurban;
                 this.change();
             });
     }
 
-    goBack(): void {
-        this.location.back();
-    }
-
-    save(): void {
+    onSubmit(): void {
         if (this.kurban) {
-            this.kurbanService.updateKurban(this.kurban)
-                .subscribe(() => this.goBack());
+            this.kurbanService.updateKurban(this.kurbanEdit)
+                .subscribe(() => {
+                    this.router.navigate(['/kurbanlar']);
+                });
         }
     }
 
