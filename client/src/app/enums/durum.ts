@@ -1,6 +1,6 @@
 export enum Durum {
-    SATISTA = "Satışta",
-    SATILDI = "Satıldı",
-    KESILDI = "Kesildi",
-    TELEF = "Telef Oldu",
+    SATISTA = "SATISTA",
+    SATILDI = "SATILDI",
+    KESILDI = "KESILDI",
+    TELEF = "TELEF",
 }

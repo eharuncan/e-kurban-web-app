@@ -6,7 +6,7 @@ import {Durum} from "../enums/durum";
 
 export interface Kurban {
   id: number;
-  resimUrl: string;
+  resimUrl?: string;
   cins: Cins;
   kunye: KunyeKucukbas | KunyeBuyukbas;
   kupeNo: string;

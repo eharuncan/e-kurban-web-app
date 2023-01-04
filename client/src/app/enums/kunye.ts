@@ -1,12 +1,12 @@
 export enum KunyeKucukbas {
-    KOYUN = "Koyun",
-    KECI = "Keçi",
-    KUZU = "Kuzu",
+    KOYUN = "KOYUN",
+    KECI = "KECI",
+    KUZU = "KUZU",
 }
 
 export enum KunyeBuyukbas {
-    OKUZ = "Öküz",
-    BOGA = "Boğa",
-    DANA = "Dana",
-    DUVE = "Düve",
+    OKUZ = "OKUZ",
+    BOGA = "BOGA",
+    DANA = "DANA",
+    DUVE = "DUVE",
 }

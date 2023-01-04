@@ -3,19 +3,19 @@
 <form (ngSubmit)="onSubmit()" #hissedarDuzenleForm="ngForm">
     <mat-form-field>
         <mat-label>Ad</mat-label>
-        <input [(ngModel)]="editHissedar.ad" name="ad" matInput placeholder="" value="{{editHissedar.ad}}">
+        <input [(ngModel)]="editHissedar.ad" name="ad" matInput placeholder="" value="{{editHissedar.ad}}" required>
     </mat-form-field>
     <br>
 
     <mat-form-field>
         <mat-label>Soyad</mat-label>
-        <input [(ngModel)]="editHissedar.soyad" name="soyad" matInput placeholder="" value="{{editHissedar.soyad}}">
+        <input [(ngModel)]="editHissedar.soyad" name="soyad" matInput placeholder="" value="{{editHissedar.soyad}}" required>
     </mat-form-field>
     <br>
 
     <mat-form-field>
         <mat-label>Telefon No</mat-label>
-        <input [(ngModel)]="editHissedar.tel" name="tel" matInput placeholder="" value="{{editHissedar.tel}}">
+        <input [(ngModel)]="editHissedar.tel" name="tel" matInput placeholder="" value="{{editHissedar.tel}}" required>
     </mat-form-field>
     <br>
 

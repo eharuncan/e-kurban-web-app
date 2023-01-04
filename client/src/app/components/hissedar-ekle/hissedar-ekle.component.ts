@@ -19,7 +19,7 @@ export class HissedarEkleComponent {
 
   public onSubmit(): void {
     // console.log(this.newHissedar.ad);
-    this.hissedarService.addHissedar({"ad": this.newHissedar.ad, "soyad": this.newHissedar.soyad, "tel": this.newHissedar.tel})
+    this.hissedarService.addHissedar(this.newHissedar)
         .subscribe();
     this.router.navigate(['/hissedarlar']);
   }

@@ -28,7 +28,6 @@ export class KurbanBilgiComponent implements OnInit {
     }else if (this.kurban.cins === Cins.BUYUKBAS){
       this.kunyeler = Object.values(KunyeBuyukbas);
     }
-
   }
 
   cinsler = Object.values(Cins);

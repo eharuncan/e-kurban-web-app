@@ -6,7 +6,7 @@ import {Durum} from "./enums/durum";
 import {Hissedar} from "./models/hissedar";
 
 export const KURBAN: Kurban =
-  { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 1, hisse: undefined };
+  { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 3, hisse: undefined };
 
 export const KURBANLAR: Kurban[] = [
   { id: 1, resimUrl: "/assets/images/kurban.jpg", cins: Cins.BUYUKBAS, kunye: KunyeBuyukbas.OKUZ, kupeNo: "AB123", kilo: 850, yas: 2, fiyat: 14500, durum: Durum.SATISTA, kesimSirasi: 1, hisse: undefined },

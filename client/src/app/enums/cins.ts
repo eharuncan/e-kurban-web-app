@@ -1,4 +1,4 @@
 export enum Cins {
-    KUCUKBAS = "Küçükbaş",
-    BUYUKBAS = "Büyükbaş",
+    KUCUKBAS = "KUCUKBAS",
+    BUYUKBAS = "BUYUKBAS",
 }

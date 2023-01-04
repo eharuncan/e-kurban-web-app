@@ -3,6 +3,7 @@ import {KunyeKucukbas} from "../enums/kunye";
 import {KunyeBuyukbas} from "../enums/kunye";
 
 export interface KurbanCreate {
+    resimUrl?: string;
     cins: Cins;
     kunye: KunyeKucukbas | KunyeBuyukbas;
     kupeNo: string;
