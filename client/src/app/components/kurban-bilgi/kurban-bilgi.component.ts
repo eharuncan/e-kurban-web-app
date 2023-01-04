@@ -10,6 +10,8 @@ import {KunyeBuyukbas, KunyeKucukbas} from "../../enums/kunye";
 import {Durum} from "../../enums/durum";
 import {KurbanEdit} from "../../models/kurbanEdit";
 import {KurbanCreate} from "../../models/kurbanCreate";
+import {Hisse} from "../../models/hisse";
+import {Hissedar} from "../../models/hissedar";
 
 @Component({
     selector: 'app-kurban-bilgi',
@@ -128,6 +130,18 @@ export class KurbanBilgiComponent implements OnInit {
         } else {
             this.kurbanResimUrl = this.kurban.resimUrl || "";
         }
+    }
+
+    hissedarEkle(hisse: Hisse): void {
+
+    }
+
+    hissedarDuzenle(hisse: Hisse, hissedar: Hissedar): void {
+
+    }
+
+    hissedarKaldir(hisse: Hisse, hissedar: Hissedar): void {
+
     }
 }
 
