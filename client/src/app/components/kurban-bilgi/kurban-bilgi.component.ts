@@ -1,12 +1,13 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 
-import { Kurban } from '../../models/kurban';
-import { KurbanService } from '../../services/kurban.service';
-import {KURBAN, KURBANLAR} from "../../mock-data";
+import {Kurban} from '../../models/kurban';
+import {KurbanService} from '../../services/kurban.service';
+import {KURBAN} from "../../mock-data";
 import {Cins} from "../../enums/cins";
 import {KunyeBuyukbas, KunyeKucukbas} from "../../enums/kunye";
+
 @Component({
   selector: 'app-kurban-bilgi',
   templateUrl: './kurban-bilgi.component.html',
@@ -23,10 +24,19 @@ export class KurbanBilgiComponent implements OnInit {
 
   ngOnInit(): void {
     this.getKurban();
+
     if (this.kurban.cins === Cins.KUCUKBAS){
       this.kunyeler = Object.values(KunyeKucukbas);
     }else if (this.kurban.cins === Cins.BUYUKBAS){
       this.kunyeler = Object.values(KunyeBuyukbas);
+    }
+
+    if (this.kurban.resimUrl == ""){
+      if(this.kurban.cins === Cins.KUCUKBAS){
+        this.kurban.resimUrl = "assets/images/kurban-kucukbas-default.png";
+      }else if (this.kurban.cins === Cins.BUYUKBAS){
+        this.kurban.resimUrl = "assets/images/kurban-buyukbas-default.png";
+      }
     }
   }
 

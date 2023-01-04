@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 })
 export class KurbanEkleComponent implements OnInit{
 
-  newKurban : KurbanCreate = {resimUrl: "assets/images/kurban.jpg", kupeNo: "", cins: Cins.KUCUKBAS, kunye: KunyeKucukbas.KOYUN, fiyat:0, yas:0, kilo: 0}
+  newKurban : KurbanCreate = {resimUrl: "assets/images/kurban-kucukbas-default.png", kupeNo: "", cins: Cins.KUCUKBAS, kunye: KunyeKucukbas.KOYUN, fiyat:0, yas:0, kilo: 0}
 
   cinsler = Object.values(Cins);
   kunyeler: string [] = [];
