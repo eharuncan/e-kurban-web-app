@@ -64,9 +64,11 @@
                     </mat-form-field>
                     <br>
 
-                    <button (click)="save()" mat-raised-button color="primary">
-                        Kaydet
-                    </button>
+                    <div *ngIf="islemDurumu">
+                        <button (click)="save()" mat-raised-button color="primary">
+                            Kaydet
+                        </button>
+                    </div>
                 </td>
                 <td>
                     <table border="1">
@@ -97,43 +99,48 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" >
+                <td colspan="3">
                     <div class="hisse-list">
                         <div class="hisse-list" *ngIf="kurban.hisseList.length != 0">
                             <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList; let index = index">
                                 <mat-card-header>
-                                    Hisse No: {{ index + 1 }}
+                                    H.No: {{ index + 1 }}
                                     <mat-card-title>{{hisse.ad}} {{hisse.soyad}}</mat-card-title>
                                     <mat-card-subtitle>{{hisse.tel}}</mat-card-subtitle>
                                 </mat-card-header>
-                                <button (click)="hissedarDuzenle(hisse.id)" mat-mini-fab
-                                        color="accent"
-                                        aria-label="Edit icon">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
-                                <button (click)="hissedarKaldir(hisse.id)" mat-mini-fab
-                                        color="warn"
-                                        aria-label="Delete icon">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
+                                <div *ngIf="islemDurumu">
+                                    <button (click)="hissedarDuzenle(hisse.id)" mat-mini-fab
+                                            color="accent"
+                                            aria-label="Edit icon">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button (click)="hissedarKaldir(hisse.id)" mat-mini-fab
+                                            color="warn"
+                                            aria-label="Delete icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
                             </mat-card>
                         </div>
                         <div class="hisse-list" *ngIf="kurban.hisseAdedi - kurban.hisseList.length != 0">
-                            <mat-card class="hisse-card" *ngFor="let item of [].constructor(kurban.hisseAdedi - kurban.hisseList.length); let index = index">
+                            <mat-card class="hisse-card"
+                                      *ngFor="let item of [].constructor(kurban.hisseAdedi - kurban.hisseList.length); let index = index">
                                 <mat-card-header>
-                                    Hisse No: {{kurban.hisseList.length + index + 1 }}
+                                    H.No: {{kurban.hisseList.length + index + 1 }}
                                 </mat-card-header>
                                 <mat-card-actions>
-                                    <button (click)="mevcutHissedarEkle(kurban.id)" mat-mini-fab
-                                            color="accent"
-                                            aria-label="Add icon" title="Mevcut Hissedar Ekle">
-                                        <mat-icon>add</mat-icon>
-                                    </button>
-                                    <button (click)="yeniHissedarEkle(kurban.id)" mat-mini-fab
-                                            color="primary"
-                                            aria-label="Add icon" title="Yeni Hissedar Ekle">
-                                        <mat-icon>add</mat-icon>
-                                    </button>
+                                    <div *ngIf="islemDurumu">
+                                        <button (click)="mevcutHissedarEkle(kurban.id)" mat-mini-fab
+                                                color="accent"
+                                                aria-label="Add icon" title="Mevcut Hissedar Ekle">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                        <button (click)="yeniHissedarEkle(kurban.id)" mat-mini-fab
+                                                color="primary"
+                                                aria-label="Add icon" title="Yeni Hissedar Ekle">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </div>
                                 </mat-card-actions>
                             </mat-card>
                         </div>

@@ -20,7 +20,7 @@ export class HissedarEkleComponent {
   public onSubmit(): void {
     // console.log(this.newHissedar.ad);
     this.hissedarService.addHissedar(this.newHissedar)
-        .subscribe();
-    this.router.navigate(['/hissedarlar']);
+        .subscribe(h =>
+            this.router.navigate(['/hissedarlar']));
   }
 }

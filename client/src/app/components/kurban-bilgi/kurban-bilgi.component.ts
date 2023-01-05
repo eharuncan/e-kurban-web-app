@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
+
 import {Kurban} from '../../models/kurban';
 import {KurbanService} from '../../services/kurban.service';
 import {Cins} from "../../enums/cins";
@@ -10,6 +11,8 @@ import {KurbanEdit} from "../../models/kurbanEdit";
 import {HisseService} from "../../services/hisse.service";
 import {HissedarCreate} from "../../models/hissedarCreate";
 import {HisseCreate} from "../../models/hisseCreate";
+import {HissedarlarComponent} from "../hissedarlar/hissedarlar.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-kurban-bilgi',
@@ -61,7 +64,8 @@ export class KurbanBilgiComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private kurbanService: KurbanService,
-        private hisseService: HisseService
+        private hisseService: HisseService,
+        public dialog: MatDialog
     ) {
     }
 
@@ -122,8 +126,22 @@ export class KurbanBilgiComponent implements OnInit {
         this.islemDurumu = this.kurban.durum === Durum.SATILDI || this.kurban.durum === Durum.SATISTA;
     }
 
+    openDialog(kurbanId: number): void {
+        const dialogRef = this.dialog.open(HissedarlarComponent, {
+            data: {secilenHissedarId: 0},
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.hisseCreate.hissedarId = result;
+            this.hisseCreate.kurbanId = kurbanId;
+            this.hisseService.addMevcutHissedar(this.hisseCreate)
+                .subscribe(updatedKurban => {
+                    this.kurban = updatedKurban;
+                });
+        });
+    }
+
     getKurban(): void {
-        // this.kurban = KURBAN;
         const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
         this.kurbanService.getKurban(id)
             .subscribe(kurban => {
@@ -144,12 +162,8 @@ export class KurbanBilgiComponent implements OnInit {
     }
 
     mevcutHissedarEkle(kurbanId: number): void {
-        this.hisseCreate.kurbanId = kurbanId;
-        this.hisseCreate.hissedarId = 1;
-        this.hisseService.addMevcutHissedar(this.hisseCreate)
-            .subscribe(updatedKurban => {
-                this.kurban = updatedKurban;
-            });
+        this.openDialog(kurbanId);
+
     }
 
     yeniHissedarEkle(kurbanId: number): void {

@@ -29,7 +29,7 @@ export class KurbanlarComponent implements OnInit {
     }
 
     delete(kurban: Kurban): void {
-        this.kurbanlar = this.kurbanlar.filter(h => h !== kurban);
+        this.kurbanlar = this.kurbanlar.filter(k => k !== kurban);
         this.kurbanService.deleteKurban(kurban.id).subscribe();
     }
 
@@ -40,14 +40,14 @@ export class KurbanlarComponent implements OnInit {
     selectKucukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.KUCUKBAS);
+                this.kurbanlar = kurbanlar.filter(k => k.cins === Cins.KUCUKBAS);
             });
     }
 
     selectBuyukbas(): void {
         this.kurbanService.getKurbanlar()
             .subscribe(kurbanlar => {
-                this.kurbanlar = kurbanlar.filter(h => h.cins === Cins.BUYUKBAS);
+                this.kurbanlar = kurbanlar.filter(k => k.cins === Cins.BUYUKBAS);
             });
     }
 

@@ -27,6 +27,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { HissedarDuzenleComponent } from './components/hissedar-duzenle/hissedar-duzenle.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 @NgModule({
     imports: [
@@ -46,6 +47,7 @@ import {MatCardModule} from "@angular/material/card";
         MatSelectModule,
         MatGridListModule,
         MatCardModule,
+        MatDialogModule,
     ],
     declarations: [
         AppComponent,
@@ -59,6 +61,10 @@ import {MatCardModule} from "@angular/material/card";
         HissedarAraComponent,
         HissedarEkleComponent,
         HissedarDuzenleComponent,
+    ],
+    providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
     ],
     bootstrap: [AppComponent]
 })
