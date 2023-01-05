@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {HISSEDARLAR, KURBANLAR} from "../../mock-data";
 import {Hissedar} from "../../models/hissedar";
 import {HissedarService} from "../../services/hissedar.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {KurbanSecimMode} from "../../enums/kurbanSecimMode";
 
 export interface DialogData {
-  secilenHissedarId: number;
+  mode: KurbanSecimMode;
 }
 
 @Component({
@@ -17,9 +17,12 @@ export class HissedarlarComponent implements OnInit {
     // hissedarlar: Hissedar[] = HISSEDARLAR;
     hissedarlar: Hissedar[] = [];
     displayedColumns: string[] = ['ad', 'soyad', 'tel', 'islemler'];
+    secilenHissedarId: number = 0;
+    kurbanSecimMode: KurbanSecimMode = KurbanSecimMode.KAPALI;
 
-    constructor(private hissedarService: HissedarService, public dialogRef: MatDialogRef<HissedarlarComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: DialogData,) {
+    constructor(private hissedarService: HissedarService,
+                public dialogRef: MatDialogRef<HissedarlarComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     }
 
     onIptalClick(): void {
@@ -27,11 +30,12 @@ export class HissedarlarComponent implements OnInit {
     }
 
     onHissedarClick(hissedarId: number) {
-      this.data.secilenHissedarId = hissedarId;
+      this.secilenHissedarId = hissedarId;
     }
 
     ngOnInit(): void {
         this.getHissedarlar();
+        this.kurbanSecimMode = this.data.mode;
     }
 
     getHissedarlar(): void {

@@ -3,6 +3,6 @@ import {HissedarCreate} from "./hissedarCreate";
 
 export interface HisseCreate {
     kurbanId: number;
-    hissedarId: number;
+    hissedarId?: number;
     hissedarCreate?: HissedarCreate;
 }

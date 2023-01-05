@@ -69,8 +69,8 @@ export class HisseService {
         );
     }
 
-    addYeniHissedar(kurbanId: number, hissedarCreate: HissedarCreate): Observable<Kurban> {
-        return this.http.post<Kurban>(this.apiUrl, {kurbanId, hissedarCreate}, this.httpOptions).pipe(
+    addYeniHissedar(kurbanId: number, hisseCreate: HisseCreate): Observable<Kurban> {
+        return this.http.post<Kurban>(this.apiUrl, {kurbanId, hisseCreate}, this.httpOptions).pipe(
             catchError(this.handleError<Kurban>('addHisse'))
         );
     }

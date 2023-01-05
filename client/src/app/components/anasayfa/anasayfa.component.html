@@ -1,49 +1,47 @@
-<div style="padding: 2rem;">
-    <h2>Kurban Takip Programına Hoşgeldiniz.</h2>
-    <h3>Kurban bayramına kalan gün sayısı: {{kurbanBayraminaKalanGun}}</h3>
-    <button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
+<h2>Kurban Takip Programına Hoşgeldiniz.</h2>
+<h3>Kurban bayramına kalan gün sayısı: {{kurbanBayraminaKalanGun}}</h3>
+<button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
 
-    Satışta Olan Kurbanlar:
-    <mat-radio-group aria-label="Select an option">
-        <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
-        <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
-        <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
-    </mat-radio-group>
+Satışta Olan Kurbanlar:
+<mat-radio-group aria-label="Select an option">
+    <mat-radio-button (click)="selectTumu()" value="1" [checked]="true">Tümü</mat-radio-button>
+    <mat-radio-button (click)="selectKucukbas()" value="2">Küçükbaş</mat-radio-button>
+    <mat-radio-button (click)="selectBuyukbas()" value="3">Büyükbaş</mat-radio-button>
+</mat-radio-group>
 
-    <div *ngIf="kurbanlar.length > 0">
-        <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
-            <ng-container matColumnDef="kesimSira">
-                <th mat-header-cell *matHeaderCellDef> K.Sıra</th>
-                <td mat-cell *matCellDef="let kurban"> {{kurban.kesimSirasi}} </td>
-            </ng-container>
+<div *ngIf="kurbanlar.length > 0">
+    <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
+        <ng-container matColumnDef="kesimSira">
+            <th mat-header-cell *matHeaderCellDef> K.Sıra</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.kesimSirasi}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="cins">
-                <th mat-header-cell *matHeaderCellDef> Cinsi</th>
-                <td mat-cell *matCellDef="let kurban"><a
-                        routerLink="/kurbanlar/{{kurban.id}}">{{kurban.cins}}</a></td>
-            </ng-container>
+        <ng-container matColumnDef="cins">
+            <th mat-header-cell *matHeaderCellDef> Cinsi</th>
+            <td mat-cell *matCellDef="let kurban"><a
+                    routerLink="/kurbanlar/{{kurban.id}}">{{kurban.cins}}</a></td>
+        </ng-container>
 
-            <ng-container matColumnDef="kunye">
-                <th mat-header-cell *matHeaderCellDef> Künyesi</th>
-                <td mat-cell *matCellDef="let kurban"> {{kurban.kunye}} </td>
-            </ng-container>
+        <ng-container matColumnDef="kunye">
+            <th mat-header-cell *matHeaderCellDef> Künyesi</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.kunye}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="fiyat">
-                <th mat-header-cell *matHeaderCellDef> Fiyatı (TL)</th>
-                <td mat-cell *matCellDef="let kurban"> {{kurban.fiyat}} </td>
-            </ng-container>
+        <ng-container matColumnDef="fiyat">
+            <th mat-header-cell *matHeaderCellDef> Fiyatı (TL)</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.fiyat}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="kalanHisse">
-                <th mat-header-cell *matHeaderCellDef> Kalan Hisse</th>
-                <td mat-cell *matCellDef="let kurban"> {{kurban.hisseAdedi - kurban.hisseList.length}}
-                    / {{kurban.hisseAdedi}} </td>
-            </ng-container>
+        <ng-container matColumnDef="kalanHisse">
+            <th mat-header-cell *matHeaderCellDef> Kalan Hisse</th>
+            <td mat-cell *matCellDef="let kurban"> {{kurban.hisseAdedi - kurban.hisseList.length}}
+                / {{kurban.hisseAdedi}} </td>
+        </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-    </div>
-    <div *ngIf="kurbanlar?.length == 0">
-        Müsait olan bir kurban bulunamadı.
-    </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>
+<div *ngIf="kurbanlar?.length == 0">
+    Müsait olan bir kurban bulunamadı.
 </div>
