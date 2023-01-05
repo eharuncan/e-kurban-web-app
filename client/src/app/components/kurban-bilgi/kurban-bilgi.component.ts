@@ -145,7 +145,7 @@ export class KurbanBilgiComponent implements OnInit {
             this.hisseCreate.hissedarCreate = result;
             this.hisseCreate.kurbanId = kurbanId;
             console.log(this.hisseCreate);
-            this.hisseService.addYeniHissedar(kurbanId, this.hisseCreate)
+            this.hisseService.addYeniHissedar(this.hisseCreate)
                 .subscribe(updatedKurban => {
                     this.kurban = updatedKurban;
                 });

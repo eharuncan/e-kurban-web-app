@@ -69,8 +69,10 @@ export class HisseService {
         );
     }
 
-    addYeniHissedar(kurbanId: number, hisseCreate: HisseCreate): Observable<Kurban> {
-        return this.http.post<Kurban>(this.apiUrl, {kurbanId, hisseCreate}, this.httpOptions).pipe(
+    addYeniHissedar(hisseCreate: HisseCreate): Observable<Kurban> {
+        delete Object.assign(hisseCreate, {["hissedarCreateDTO"]: hisseCreate["hissedarCreate"] })["hissedarCreate"];
+        console.log(hisseCreate);
+        return this.http.post<Kurban>(this.apiUrl, {hisseCreate}, this.httpOptions).pipe(
             catchError(this.handleError<Kurban>('addHisse'))
         );
     }
