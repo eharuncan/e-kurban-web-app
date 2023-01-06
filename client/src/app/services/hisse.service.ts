@@ -70,9 +70,9 @@ export class HisseService {
     }
 
     addYeniHissedar(hisseCreate: HisseCreate): Observable<Kurban> {
-        delete Object.assign(hisseCreate, {["hissedarCreateDTO"]: hisseCreate["hissedarCreate"] })["hissedarCreate"];
-        console.log(hisseCreate);
-        return this.http.post<Kurban>(this.apiUrl, {hisseCreate}, this.httpOptions).pipe(
+        // delete Object.assign(hisseCreate, {["hissedarCreateDTO"]: hisseCreate["hissedarCreate"] })["hissedarCreate"];
+        // console.log(hisseCreate);
+        return this.http.post<Kurban>(this.apiUrl, {"hisseCreateDTO": hisseCreate}, this.httpOptions).pipe(
             catchError(this.handleError<Kurban>('addHisse'))
         );
     }
@@ -88,7 +88,7 @@ export class HisseService {
 
     /** PUT: update the hisse on the server */
     updateHissedar(hisseId: number, hisseCreate: HisseCreate): Observable<Kurban> {
-        return this.http.put<Kurban>(this.apiUrl + "/" + hisseId, {hisseCreate}, this.httpOptions).pipe(
+        return this.http.put<Kurban>(this.apiUrl + "/" + hisseId, {"hisseCreateDTO": hisseCreate}, this.httpOptions).pipe(
             catchError(this.handleError<Kurban>('updateHisse'))
         );
     }

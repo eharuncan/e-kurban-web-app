@@ -2,7 +2,7 @@
     <h2>Kurban Bilgi</h2>
 
     <form #hissedarEkleForm="ngForm">
-        <div id="kurban-bilgi-page" class="center" *ngIf="kurban">
+        <div class="center" *ngIf="kurban">
             <table border="0">
                 <tr>
                     <td>
@@ -109,6 +109,7 @@
                                         H.No: {{ index + 1 }}
                                         <mat-card-title>{{hisse.ad}} {{hisse.soyad}}</mat-card-title>
                                         <mat-card-subtitle>{{hisse.tel}}</mat-card-subtitle>
+                                        <mat-card-subtitle>Fiyat: {{ kurbanHisseFiyati | number:'1.0-2'}} TL</mat-card-subtitle>
                                     </mat-card-header>
                                     <div *ngIf="islemDurumu">
                                         <button (click)="hissedarDuzenle(hisse.id)" mat-mini-fab
@@ -132,12 +133,12 @@
                                     </mat-card-header>
                                     <mat-card-actions>
                                         <div *ngIf="islemDurumu">
-                                            <button (click)="mevcutHissedarEkle(kurban.id)" mat-mini-fab
+                                            <button (click)="mevcutHissedarEkle()" mat-mini-fab
                                                     color="accent"
                                                     aria-label="Add icon" title="Mevcut Hissedar Ekle">
                                                 <mat-icon>add</mat-icon>
                                             </button>
-                                            <button (click)="yeniHissedarEkle(kurban.id)" mat-mini-fab
+                                            <button (click)="yeniHissedarEkle()" mat-mini-fab
                                                     color="primary"
                                                     aria-label="Add icon" title="Yeni Hissedar Ekle">
                                                 <mat-icon>add</mat-icon>
