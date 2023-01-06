@@ -2,10 +2,10 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Hissedar} from "../../models/hissedar";
 import {HissedarService} from "../../services/hissedar.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {KurbanSecimMode} from "../../enums/kurbanSecimMode";
+import {HisseSecimMode} from "../../enums/hisseSecimMode";
 
 export interface DialogData {
-  mode: KurbanSecimMode;
+  mode: HisseSecimMode;
 }
 
 @Component({
@@ -18,7 +18,7 @@ export class HissedarlarComponent implements OnInit {
     hissedarlar: Hissedar[] = [];
     displayedColumns: string[] = ['ad', 'soyad', 'tel', 'islemler'];
     secilenHissedarId: number = 0;
-    kurbanSecimMode: KurbanSecimMode = KurbanSecimMode.KAPALI;
+    hisseSecimMode: HisseSecimMode = HisseSecimMode.KAPALI;
 
     constructor(private hissedarService: HissedarService,
                 public dialogRef: MatDialogRef<HissedarlarComponent>,
@@ -35,7 +35,7 @@ export class HissedarlarComponent implements OnInit {
 
     ngOnInit(): void {
         this.getHissedarlar();
-        this.kurbanSecimMode = this.data.mode;
+        this.hisseSecimMode = this.data.mode;
     }
 
     getHissedarlar(): void {

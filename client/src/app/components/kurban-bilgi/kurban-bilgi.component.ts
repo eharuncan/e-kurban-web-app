@@ -13,7 +13,7 @@ import {HisseCreate} from "../../models/hisseCreate";
 import {HissedarlarComponent} from "../hissedarlar/hissedarlar.component";
 import {MatDialog} from "@angular/material/dialog";
 import {HissedarEkleComponent} from "../hissedar-ekle/hissedar-ekle.component";
-import {KurbanSecimMode} from "../../enums/kurbanSecimMode";
+import {HisseSecimMode} from "../../enums/hisseSecimMode";
 
 @Component({
     selector: 'app-kurban-bilgi',
@@ -121,9 +121,9 @@ export class KurbanBilgiComponent implements OnInit {
         this.islemDurumu = this.kurban.durum === Durum.SATILDI || this.kurban.durum === Durum.SATISTA;
     }
 
-    openMevcutHissedarDialog(kurbanId: number): void {
+    openMevcutHissedarSecDialog(kurbanId: number): void {
         const dialogRef = this.dialog.open(HissedarlarComponent, {
-            data: {mode: KurbanSecimMode.MEVCUT_HISSEDAR_SEC},
+            data: {mode: HisseSecimMode.MEVCUT_HISSEDAR_SEC},
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -136,16 +136,31 @@ export class KurbanBilgiComponent implements OnInit {
         });
     }
 
-    openYeniHissedarDialog(kurbanId: number): void {
+    openYeniHissedarSecDialog(kurbanId: number): void {
         const dialogRef = this.dialog.open(HissedarEkleComponent, {
-            data: {mode: KurbanSecimMode.YENI_HISSEDAR_SEC},
+            data: {mode: HisseSecimMode.YENI_HISSEDAR_SEC},
         });
 
         dialogRef.afterClosed().subscribe(result => {
             this.hisseCreate.hissedarCreate = result;
             this.hisseCreate.kurbanId = kurbanId;
-            console.log(this.hisseCreate);
             this.hisseService.addYeniHissedar(this.hisseCreate)
+                .subscribe(updatedKurban => {
+                    this.kurban = updatedKurban;
+                });
+        });
+    }
+
+    openHissedarDuzenleDialog(hisseId: number): void {
+        const dialogRef = this.dialog.open(HissedarlarComponent, {
+            data: {mode: HisseSecimMode.HISSEDAR_DUZENLE},
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.hisseCreate.hissedarId = result;
+            this.hisseCreate.kurbanId = this.kurban.id;
+            console.log(this.hisseCreate);
+            this.hisseService.updateHissedar(hisseId, this.hisseCreate)
                 .subscribe(updatedKurban => {
                     this.kurban = updatedKurban;
                 });
@@ -173,18 +188,15 @@ export class KurbanBilgiComponent implements OnInit {
     }
 
     mevcutHissedarEkle(kurbanId: number): void {
-        this.openMevcutHissedarDialog(kurbanId);
+        this.openMevcutHissedarSecDialog(kurbanId);
     }
 
     yeniHissedarEkle(kurbanId: number): void {
-        this.openYeniHissedarDialog(kurbanId);
+        this.openYeniHissedarSecDialog(kurbanId);
     }
 
     hissedarDuzenle(hisseId: number): void {
-        this.hisseService.updateHissedar(hisseId, this.hisseCreate)
-            .subscribe(updatedKurban => {
-                this.kurban = updatedKurban;
-            });
+        this.openHissedarDuzenleDialog(hisseId);
     }
 
     hissedarKaldir(hisseId: number): void {

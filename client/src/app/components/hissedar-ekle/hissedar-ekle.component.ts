@@ -3,10 +3,10 @@ import {Router} from "@angular/router";
 import {HissedarService} from "../../services/hissedar.service";
 import {HissedarCreate} from "../../models/hissedarCreate";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {KurbanSecimMode} from "../../enums/kurbanSecimMode";
+import {HisseSecimMode} from "../../enums/hisseSecimMode";
 
 export interface DialogData {
-  mode: KurbanSecimMode;
+  mode: HisseSecimMode;
 }
 
 @Component({
@@ -17,7 +17,7 @@ export interface DialogData {
 export class HissedarEkleComponent implements OnInit{
 
   newHissedar : HissedarCreate = {"ad": "", "soyad": "", "tel": ""}
-  kurbanSecimMode: KurbanSecimMode = KurbanSecimMode.KAPALI;
+  hisseSecimMode: HisseSecimMode = HisseSecimMode.KAPALI;
 
   constructor(private hissedarService: HissedarService,
               private router: Router,
@@ -26,7 +26,7 @@ export class HissedarEkleComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.kurbanSecimMode = this.data.mode;
+    this.hisseSecimMode = this.data.mode;
   }
 
   onIptalClick(): void {

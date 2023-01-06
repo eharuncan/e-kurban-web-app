@@ -1,5 +1,6 @@
-export enum KurbanSecimMode {
+export enum HisseSecimMode {
     KAPALI="KAPALI",
     MEVCUT_HISSEDAR_SEC="MEVCUT_HISSEDAR_SEC",
     YENI_HISSEDAR_SEC="YENI_HISSEDAR_SEC",
+    HISSEDAR_DUZENLE="HISSEDAR_DUZENLE"
 }

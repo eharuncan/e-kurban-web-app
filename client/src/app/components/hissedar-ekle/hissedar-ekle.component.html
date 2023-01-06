@@ -20,13 +20,13 @@
         </mat-form-field>
         <br>
 
-        <div *ngIf="!kurbanSecimMode">
+        <div *ngIf="!hisseSecimMode">
             <button type="submit" mat-raised-button color="primary" [disabled]="!hissedarEkleForm.form.valid">Kaydet
             </button>
         </div>
     </form>
 
-    <div *ngIf="kurbanSecimMode">
+    <div *ngIf="hisseSecimMode">
         <button mat-raised-button color="warn" (click)="onIptalClick()">İptal</button>
         <button mat-raised-button color="primary" [mat-dialog-close]="newHissedar" cdkFocusInitial>Kaydet</button>
     </div>
