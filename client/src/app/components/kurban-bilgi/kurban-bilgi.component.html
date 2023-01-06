@@ -107,17 +107,21 @@
                                 <mat-card class="hisse-card" *ngFor="let hisse of kurban.hisseList; let index = index">
                                     <mat-card-header>
                                         H.No: {{ index + 1 }}
-                                        <mat-card-title>{{hisse.ad}} {{hisse.soyad}}</mat-card-title>
+                                        <mat-card-title>{{hisse.ad}}</mat-card-title>
+                                        <mat-card-title>{{hisse.soyad}}</mat-card-title>
                                         <mat-card-subtitle>{{hisse.tel}}</mat-card-subtitle>
-                                        <mat-card-subtitle>Fiyat: {{ kurbanHisseFiyati | number:'1.0-2'}} TL</mat-card-subtitle>
+                                        <mat-card-subtitle>Fiyat: {{ kurbanHisseFiyati | number:'1.0-2'}}TL
+                                        </mat-card-subtitle>
                                     </mat-card-header>
-                                    <div *ngIf="islemDurumu">
-                                        <button (click)="hissedarDuzenle(hisse.id)" mat-mini-fab
+                                    <div *ngIf="islemDurumu" class="islem-butons">
+                                        <button (click)="hissedarDuzenle(hisse.id)"
+                                                mat-mini-fab
                                                 color="accent"
                                                 aria-label="Edit icon">
                                             <mat-icon>edit</mat-icon>
                                         </button>
-                                        <button (click)="hissedarKaldir(hisse.id)" mat-mini-fab
+                                        <button (click)="hissedarKaldir(hisse.id)"
+                                                mat-mini-fab
                                                 color="warn"
                                                 aria-label="Delete icon">
                                             <mat-icon>delete</mat-icon>
@@ -132,7 +136,7 @@
                                         H.No: {{kurban.hisseList.length + index + 1 }}
                                     </mat-card-header>
                                     <mat-card-actions>
-                                        <div *ngIf="islemDurumu">
+                                        <div *ngIf="islemDurumu" class="islem-butons">
                                             <button (click)="mevcutHissedarEkle()" mat-mini-fab
                                                     color="accent"
                                                     aria-label="Add icon" title="Mevcut Hissedar Ekle">

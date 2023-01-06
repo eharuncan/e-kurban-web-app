@@ -11,3 +11,9 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.islem-butons{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+}
