@@ -20,6 +20,7 @@ export class AnasayfaComponent implements OnInit {
 
     ngOnInit(): void {
         this.getKurbanlar();
+        this.getKurbanBayraminaKalanGun();
     }
 
     getKurbanlar(): void {

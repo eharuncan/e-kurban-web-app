@@ -23,7 +23,7 @@ export class KurbanService {
     }
 
     getKurbanBayraminaKalanGun(): Observable<number> {
-        const url = `api/v1/kurban-bayramina-kalan-gun`;
+        const url = `http://localhost:8080/api/v1/kurban-bayramina-kalan-gun`;
         return this.http.get<number>(url).pipe(
             catchError(this.handleError<number>(`getkurban-bayramina-kalan-gun`))
         );
