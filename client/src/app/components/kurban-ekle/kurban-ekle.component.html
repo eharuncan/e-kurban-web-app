@@ -1,70 +1,75 @@
-<h2>Kurban Ekle</h2>
+<div id="kurban-ekle-page" class="page">
+    <h2>Kurban Ekle</h2>
 
-<div id="kurban-ekle-page" class="center">
-    <form (ngSubmit)="onSubmit()" #kurbanEkleForm="ngForm">
+    <div id="kurban-ekle-page" class="center">
+        <form (ngSubmit)="onSubmit()" #kurbanEkleForm="ngForm">
 
-        <table>
-            <tr>
-                <td>
-        <img src="{{newKurbanResimUrl}}" width="810" height="458" alt="Kurban Foto"/>
-                    <br>
-        <mat-form-field [style.width.px]=810>
-            <mat-label>Kurban Resmi URL</mat-label>
-            <input [(ngModel)]="newKurban.resimUrl" #resimUrl (change)="onResimUrlChange(resimUrl.value)" value="{{newKurban.resimUrl}}"  name="resimUrl" matInput placeholder="">
-        </mat-form-field>
-        <br>
-                </td>
-                <td>
-        <mat-form-field>
-            <mat-label>Küpe No</mat-label>
-            <input [(ngModel)]="newKurban.kupeNo" name="kupeNo" matInput placeholder="" required>
-        </mat-form-field>
-        <br>
+            <table>
+                <tr>
+                    <td>
+                        <img src="{{newKurbanResimUrl}}" width="810" height="458" alt="Kurban Foto"/>
+                        <br>
+                        <mat-form-field [style.width.px]=810>
+                            <mat-label>Kurban Resmi URL</mat-label>
+                            <input [(ngModel)]="newKurban.resimUrl" #resimUrl
+                                   (change)="onResimUrlChange(resimUrl.value)" value="{{newKurban.resimUrl}}"
+                                   name="resimUrl" matInput placeholder="">
+                        </mat-form-field>
+                        <br>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>Küpe No</mat-label>
+                            <input [(ngModel)]="newKurban.kupeNo" name="kupeNo" matInput placeholder="" required>
+                        </mat-form-field>
+                        <br>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Cinsi</mat-label>
-            <mat-select [(ngModel)]="newKurban.cins" name="cins" (selectionChange)="onCinsChange($event)" required>
-                <mat-option *ngFor="let cins of cinsler" [value]="cins">
-                    {{cins}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Cinsi</mat-label>
+                            <mat-select [(ngModel)]="newKurban.cins" name="cins"
+                                        (selectionChange)="onCinsChange($event)" required>
+                                <mat-option *ngFor="let cins of cinsler" [value]="cins">
+                                    {{cins}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Künyesi</mat-label>
-            <mat-select [(ngModel)]="newKurban.kunye" name="kunye" required>
-                <mat-option *ngFor="let kunye of kunyeler" [value]="kunye">
-                    {{kunye}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Künyesi</mat-label>
+                            <mat-select [(ngModel)]="newKurban.kunye" name="kunye" required>
+                                <mat-option *ngFor="let kunye of kunyeler" [value]="kunye">
+                                    {{kunye}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br>
 
-        <mat-form-field>
-            <mat-label>Kilosu (kg)</mat-label>
-            <input [(ngModel)]="newKurban.kilo" name="kilo" matInput placeholder="" required>
-        </mat-form-field>
-        <br>
+                        <mat-form-field>
+                            <mat-label>Kilosu (kg)</mat-label>
+                            <input [(ngModel)]="newKurban.kilo" name="kilo" matInput placeholder="" required>
+                        </mat-form-field>
+                        <br>
 
-        <mat-form-field>
-            <mat-label>Yaşı (ay)</mat-label>
-            <input [(ngModel)]="newKurban.yas" name="yas" matInput placeholder="" required>
-        </mat-form-field>
-        <br>
+                        <mat-form-field>
+                            <mat-label>Yaşı (ay)</mat-label>
+                            <input [(ngModel)]="newKurban.yas" name="yas" matInput placeholder="" required>
+                        </mat-form-field>
+                        <br>
 
-        <mat-form-field>
-            <mat-label>Fiyatı (TL)</mat-label>
-            <input [(ngModel)]="newKurban.fiyat" name="fiyat" matInput placeholder="" required>
-        </mat-form-field>
-        <br>
+                        <mat-form-field>
+                            <mat-label>Fiyatı (TL)</mat-label>
+                            <input [(ngModel)]="newKurban.fiyat" name="fiyat" matInput placeholder="" required>
+                        </mat-form-field>
+                        <br>
 
-        <!-- (click) passes input value to add() and then clears the input -->
-        <button type="submit"  mat-raised-button color="primary" [disabled]="!kurbanEkleForm.form.valid">
-            Kaydet
-        </button>
-                </td>
-            </tr>
-        </table>
-    </form>
+                        <!-- (click) passes input value to add() and then clears the input -->
+                        <button type="submit" mat-raised-button color="primary" [disabled]="!kurbanEkleForm.form.valid">
+                            Kaydet
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </div>
