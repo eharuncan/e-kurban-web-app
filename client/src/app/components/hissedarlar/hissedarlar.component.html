@@ -1,52 +1,58 @@
 <div id="hissedarlar-page" class="page">
-<h2>Kayıtlı Hissedarlar</h2>
+    <h2>Kayıtlı Hissedarlar</h2>
 
-<app-hissedar-ara></app-hissedar-ara>
+    <app-hissedar-ara></app-hissedar-ara>
 
-<button routerLink="/hissedar-ekle" mat-raised-button color="primary">Hissedar Ekle</button>
+    <div *ngIf="!kurbanSecimMode">
+        <button routerLink="/hissedar-ekle" mat-raised-button color="primary">Hissedar Ekle</button>
+    </div>
 
-<table mat-table [dataSource]="hissedarlar" class="mat-elevation-z8">
-    <ng-container matColumnDef="ad">
-        <th mat-header-cell *matHeaderCellDef> Ad</th>
-        <td (click)="onHissedarClick(element.id)" mat-cell *matCellDef="let element"> {{element.ad}} </td>
-    </ng-container>
+    <table mat-table [dataSource]="hissedarlar" class="mat-elevation-z8">
+        <ng-container matColumnDef="ad">
+            <th mat-header-cell *matHeaderCellDef> Ad</th>
+            <td (click)="onHissedarClick(element.id)" mat-cell *matCellDef="let element"> {{element.ad}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="soyad">
-        <th mat-header-cell *matHeaderCellDef> Soyad</th>
-        <td mat-cell *matCellDef="let element"> {{element.soyad}} </td>
-    </ng-container>
+        <ng-container matColumnDef="soyad">
+            <th mat-header-cell *matHeaderCellDef> Soyad</th>
+            <td mat-cell *matCellDef="let element"> {{element.soyad}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="tel">
-        <th mat-header-cell *matHeaderCellDef> Telefon No</th>
-        <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
-    </ng-container>
+        <ng-container matColumnDef="tel">
+            <th mat-header-cell *matHeaderCellDef> Telefon No</th>
+            <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="islemler">
-        <th mat-header-cell *matHeaderCellDef> İşlemler</th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-mini-fab color="accent" aria-label="Edit icon">
-                <a routerLink="/hissedarlar/{{element.id}}">
-                    <mat-icon>edit</mat-icon>
-                </a>
-            </button>
-            <button (click)="delete(element)" mat-mini-fab color="warn" aria-label="Delete icon">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        <ng-container matColumnDef="islemler">
+            <th mat-header-cell *matHeaderCellDef> İşlemler</th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="!kurbanSecimMode">
+                    <button mat-mini-fab color="accent" aria-label="Edit icon">
+                        <a routerLink="/hissedarlar/{{element.id}}">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                    </button>
+                    <button (click)="delete(element)" mat-mini-fab color="warn" aria-label="Delete icon">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
 
-<div *ngIf="kurbanSecimMode">
-    <mat-form-field>
-        <mat-label>Seçilen Hissedar ID</mat-label>
-        <input [(ngModel)]="secilenHissedarId" name="data.secilenHissedarId" matInput placeholder=""
-               value="{{secilenHissedarId}}" required>
-    </mat-form-field>
 
-    <button mat-button (click)="onIptalClick()">İptal</button>
-    <button mat-button [mat-dialog-close]="secilenHissedarId" cdkFocusInitial>Seç</button>
-</div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div *ngIf="kurbanSecimMode">
+        <mat-form-field>
+            <mat-label>Seçilen Hissedar ID</mat-label>
+            <input [(ngModel)]="secilenHissedarId" name="data.secilenHissedarId" matInput placeholder=""
+                   value="{{secilenHissedarId}}" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" (click)="onIptalClick()">İptal</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="secilenHissedarId" cdkFocusInitial>Seç</button>
+    </div>
 </div>
