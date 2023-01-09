@@ -1,7 +1,7 @@
 <div id="anasayfa" class="page">
     <h2>Kurban Takip Programına Hoşgeldiniz.</h2>
     <h3>Kurban bayramına kalan gün sayısı: {{kurbanBayraminaKalanGun}}</h3>
-    <button routerLink="/kurban-ekle" mat-raised-button color="primary">Kurban Ekle</button>
+    <button routerLink="/kurban-ekle" mat-raised-button color="primary" class="button">Kurban Ekle</button>
 
     Satışta Olan Kurbanlar:
     <mat-radio-group aria-label="Select an option">
@@ -11,7 +11,7 @@
     </mat-radio-group>
 
     <div *ngIf="kurbanlar.length > 0">
-        <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8">
+        <table mat-table [dataSource]="kurbanlar" class="mat-elevation-z8 data-table">
             <ng-container matColumnDef="kesimSira">
                 <th mat-header-cell *matHeaderCellDef> K.Sıra</th>
                 <td mat-cell *matCellDef="let kurban"> {{kurban.kesimSirasi}} </td>

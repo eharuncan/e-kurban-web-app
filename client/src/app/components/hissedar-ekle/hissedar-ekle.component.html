@@ -27,7 +27,7 @@
     </form>
 
     <div *ngIf="hisseSecimMode">
-        <button mat-raised-button color="warn" (click)="onIptalClick()">İptal</button>
-        <button mat-raised-button color="primary" [mat-dialog-close]="newHissedar" cdkFocusInitial>Kaydet</button>
+        <button mat-raised-button color="warn" class="button" (click)="onIptalClick()">İptal</button>
+        <button mat-raised-button color="primary" class="button" [mat-dialog-close]="newHissedar" cdkFocusInitial>Kaydet</button>
     </div>
 </div>

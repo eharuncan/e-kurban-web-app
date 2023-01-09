@@ -4,10 +4,10 @@
     <app-hissedar-ara></app-hissedar-ara>
 
     <div *ngIf="!hisseSecimMode">
-        <button routerLink="/hissedar-ekle" mat-raised-button color="primary">Hissedar Ekle</button>
+        <button routerLink="/hissedar-ekle" mat-raised-button color="primary" class="button">Hissedar Ekle</button>
     </div>
 
-    <table mat-table [dataSource]="hissedarlar" class="mat-elevation-z8">
+    <table mat-table [dataSource]="hissedarlar" class="mat-elevation-z8 data-table">
         <ng-container matColumnDef="ad">
             <th mat-header-cell *matHeaderCellDef> Ad</th>
             <td (click)="onHissedarClick(element.id)" mat-cell *matCellDef="let element"> {{element.ad}} </td>
@@ -51,7 +51,7 @@
                    value="{{secilenHissedarId}}" required disabled>
         </mat-form-field>
 
-        <button mat-raised-button color="warn" (click)="onIptalClick()">İptal</button>
-        <button mat-raised-button color="primary" [mat-dialog-close]="secilenHissedarId" cdkFocusInitial>Seç</button>
+        <button mat-raised-button color="warn" (click)="onIptalClick()" class="button">İptal</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="secilenHissedarId" cdkFocusInitial class="button">Seç</button>
     </div>
 </div>

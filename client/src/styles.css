@@ -23,6 +23,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin: 2rem;
 }
 
+.data-table {
+    margin-top: 1rem;
+}
+
+.button {
+    margin-right: 1rem;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
